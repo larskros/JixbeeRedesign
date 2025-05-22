@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MudBlazor" Version="8.6.0" />
+    <PackageReference Include="MudBlazor.ThemeManager" Version="3.0.0" />
+	  <None Update="Components/**/*.razor.css" CssScope="custom-scope-identifier" />
+  </ItemGroup>
+
+</Project>

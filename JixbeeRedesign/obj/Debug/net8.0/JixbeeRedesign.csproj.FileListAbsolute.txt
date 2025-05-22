@@ -1,0 +1,96 @@
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\JixbeeRedesign.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\JixbeeRedesign.AssemblyInfoInputs.cache
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\JixbeeRedesign.AssemblyInfo.cs
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\JixbeeRedesign.csproj.CoreCompileInputs.cache
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\JixbeeRedesign.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\JixbeeRedesign.csproj.AssemblyReference.cache
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\appsettings.json
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\JixbeeRedesign.staticwebassets.runtime.json
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\JixbeeRedesign.exe
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\JixbeeRedesign.deps.json
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\JixbeeRedesign.runtimeconfig.json
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\JixbeeRedesign.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\JixbeeRedesign.pdb
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\Microsoft.AspNetCore.Authorization.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\Microsoft.AspNetCore.Components.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Forms.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Web.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\Microsoft.AspNetCore.Metadata.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\Microsoft.Extensions.Localization.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\Microsoft.Extensions.Localization.Abstractions.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\Microsoft.JSInterop.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\MudBlazor.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\staticwebassets\msbuild.JixbeeRedesign.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\staticwebassets\msbuild.build.JixbeeRedesign.props
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.JixbeeRedesign.props
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.JixbeeRedesign.props
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\scopedcss\Components\Components\Card.razor.rz.scp.css
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\scopedcss\Components\Components\Topbar.razor.rz.scp.css
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\scopedcss\bundle\JixbeeRedesign.styles.css
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\scopedcss\projectbundle\JixbeeRedesign.bundle.scp.css
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\JixbeeRedesign.csproj.CopyComplete
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\JixbeeRedesign.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\refint\JixbeeRedesign.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\JixbeeRedesign.pdb
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\JixbeeRedesign.genruntimeconfig.cache
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\ref\JixbeeRedesign.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\scopedcss\Components\Components\SegmentedControl.razor.rz.scp.css
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\scopedcss\Components\Pages\Screens\Home.razor.rz.scp.css
+C:\Users\larsk\Documents\Peanut Design\Jixbee Redesign\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\MudBlazor.ThemeManager.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\appsettings.json
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\JixbeeRedesign.staticwebassets.runtime.json
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\JixbeeRedesign.exe
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\JixbeeRedesign.deps.json
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\JixbeeRedesign.runtimeconfig.json
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\JixbeeRedesign.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\JixbeeRedesign.pdb
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\Microsoft.AspNetCore.Authorization.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\Microsoft.AspNetCore.Components.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Forms.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Web.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\Microsoft.AspNetCore.Metadata.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\Microsoft.Extensions.Localization.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\Microsoft.Extensions.Localization.Abstractions.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\Microsoft.JSInterop.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\MudBlazor.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\bin\Debug\net8.0\MudBlazor.ThemeManager.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\JixbeeRedesign.csproj.AssemblyReference.cache
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\JixbeeRedesign.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\JixbeeRedesign.AssemblyInfoInputs.cache
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\JixbeeRedesign.AssemblyInfo.cs
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\JixbeeRedesign.csproj.CoreCompileInputs.cache
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\JixbeeRedesign.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\JixbeeRedesign.sourcelink.json
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\staticwebassets\msbuild.JixbeeRedesign.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\staticwebassets\msbuild.build.JixbeeRedesign.props
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.JixbeeRedesign.props
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.JixbeeRedesign.props
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\scopedcss\Components\Components\Card.razor.rz.scp.css
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\scopedcss\Components\Components\Topbar.razor.rz.scp.css
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\scopedcss\Components\Pages\Screens\Home.razor.rz.scp.css
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\scopedcss\bundle\JixbeeRedesign.styles.css
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\scopedcss\projectbundle\JixbeeRedesign.bundle.scp.css
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\JixbeeRedesign.csproj.CopyComplete
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\JixbeeRedesign.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\refint\JixbeeRedesign.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\JixbeeRedesign.pdb
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\JixbeeRedesign.genruntimeconfig.cache
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\ref\JixbeeRedesign.dll

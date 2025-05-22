@@ -1,0 +1,50 @@
+is_global = true
+build_property.MudDebugAnalyzer = 
+build_property.MudAllowedAttributePattern = 
+build_property.MudAllowedAttributeList = 
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = JixbeeRedesign
+build_property.RootNamespace = JixbeeRedesign
+build_property.ProjectDir = C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/larsk/Documents/Peanut Design/Jixbee/JixbeeRedesign/JixbeeRedesign/Components/App.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/larsk/Documents/Peanut Design/Jixbee/JixbeeRedesign/JixbeeRedesign/Components/Routes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/larsk/Documents/Peanut Design/Jixbee/JixbeeRedesign/JixbeeRedesign/Components/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/larsk/Documents/Peanut Design/Jixbee/JixbeeRedesign/JixbeeRedesign/Components/Components/Card.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDb21wb25lbnRzXENhcmQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = custom-scope-identifier
+
+[C:/Users/larsk/Documents/Peanut Design/Jixbee/JixbeeRedesign/JixbeeRedesign/Components/Components/Topbar.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDb21wb25lbnRzXFRvcGJhci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = custom-scope-identifier
+
+[C:/Users/larsk/Documents/Peanut Design/Jixbee/JixbeeRedesign/JixbeeRedesign/Components/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = custom-scope-identifier
+
+[C:/Users/larsk/Documents/Peanut Design/Jixbee/JixbeeRedesign/JixbeeRedesign/Components/Pages/Screens/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTY3JlZW5zXEhvbWUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = custom-scope-identifier

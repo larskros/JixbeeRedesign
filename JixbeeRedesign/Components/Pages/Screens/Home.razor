@@ -1,0 +1,81 @@
+﻿@page "/"
+
+<Topbar />
+<div class="app-content">
+    <MudTabs Rounded="true"
+             TabPanelClass="tab-filter"
+             ActiveTabClass="active-tab"
+             HideSlider="true">
+        @foreach (var item in SegmentItems)
+        {
+            <MudTabPanel Text="@item">
+
+            </MudTabPanel>
+        }
+    </MudTabs>
+    <Card Class="savings-card">
+        <div class="available-salary">
+            <div class="available-salary-item">
+				<span class="salary-amount">€2.500</span>
+                Bruto opgebouwd
+            </div>
+            <div class="available-salary-item">
+                <span class="salary-amount">€1.250</span>
+                Netto beschikbaar
+            </div>
+        </div>
+		<div class="salary-progress-bar">
+			<div class="salary-progress-fill"></div>
+        </div>
+        <span class="total-withdraw">Reeds totaal netto opgenomen: €0,-</span>
+        <button class="button">Opnemen</button>
+    </Card>
+    <Card Class="menu-card">
+		<h1>Bekijk</h1>
+		<div class="menu-wrapper">
+			<div class="menu-item">
+                <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.BarChart" />
+                <span>Gewerkte uren</span>
+                <MudIcon Icon="@Icons.Material.Rounded.ChevronRight" />
+            </div>
+			<div class="divider"></div>
+            <div class="menu-item">
+                <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.CalendarMonth" />
+                <span>Ingeplande opnames</span>
+                <MudIcon Icon="@Icons.Material.Rounded.ChevronRight" />
+            </div>
+            <div class="divider"></div>
+            <div class="menu-item">
+                <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.HistoryToggleOff" />
+                <span>Recente opnames</span>
+                <MudIcon Icon="@Icons.Material.Rounded.ChevronRight" />
+            </div>
+        </div>
+    </Card>
+</div>
+
+@code {
+    private List<string> SegmentItems = new()
+        {
+            "Salaris", "Vakantiegeld", "Overuren", "Declaraties"
+        };
+    [Parameter]
+    public string? Class { get; set; }
+
+    
+
+    [Parameter]
+    public EventCallback<int> ActiveIndexChanged { get; set; }
+
+    [Parameter]
+    public int InitialIndex { get; set; }
+
+    private int activeIndex = 0;
+
+    private async Task OnActiveIndexChanged(int index)
+    {
+        activeIndex = index;
+        await ActiveIndexChanged.InvokeAsync(index);
+        StateHasChanged();
+    }
+}

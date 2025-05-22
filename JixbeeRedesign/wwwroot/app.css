@@ -1,0 +1,35 @@
+:root {
+    --primarycolor100: #42A5F5;
+    --primarycolor15: #E4F0F9;
+    --secundarycolor100: #FFCC80;
+    --black100: #1F1F1F;
+    --black50: #909090;
+    --black33: #B5B5B5;
+    --black10: #E9E9E9;
+    --white: #FFFFFF;
+    --textinput: #F4F5F6;
+    --background: #F0F0F0;
+    --alertsuccess: #63C132;
+}
+
+* {
+    font-family: Poppins;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: 600;
+    margin: 0 0 24px 0;
+}
+
+.divider {
+    background-color: var(--black10);
+    width: 100%;
+    height: 1px;
+    border-radius: 1px;
+    margin: 16px 0;
+}
+
+.primary-icon {
+    fill: var(--primarycolor100) !important;
+}
