@@ -1,0 +1,12 @@
+﻿<div class="topbar-container">
+	<div class="topbar-item left">
+		<MudIcon Icon="@Icons.Material.Outlined.West" Size="Size.Small"></MudIcon>
+	</div>
+	<div class="topbar-item middle">
+		<span>@PageTitle</span>
+	</div>
+</div>
+
+@code {
+	[Parameter] public string PageTitle { get; set; }
+}

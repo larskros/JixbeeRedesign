@@ -1,0 +1,26 @@
+﻿@page "/login"
+
+<div class="app-content">
+    <MudImage Class="align-self-center mb-10" Src="/img/jixbee-logo-zwart.png" Height="24" />
+    <Card Class="login-card">
+		<span class="login-title">Work hard <br /><span>Pay</span> smart</span>
+        <MudTextField @bind-Value="TextValueEmail"
+                      Variant="Variant.Filled" 
+                      Placeholder="E-mailadres" 
+                      Adornment="Adornment.Start" 
+                      AdornmentIcon="@Icons.Material.Filled.Mail" />
+		<div class="input-field-wrapper">
+            <MudTextField @bind-Value="TextValuePassword"
+                          Variant="Variant.Filled"
+                          Placeholder="Wachtwoord"
+                          InputType="@PasswordInput"
+                          Adornment="Adornment.Start"
+                          AdornmentIcon="@Icons.Material.Filled.Key" />
+            <MudIcon Class="primary-icon icon-button" Icon="@PasswordInputIcon" onclick="@TogglePasswordVisiblity" />
+            <MudLink Href="#">Wachtwoord vergeten</MudLink>
+        </div>
+        <MudButton Class="primary-button">Log in</MudButton>
+    </Card>
+    <MudLink Href="#">Uitnodiging aanvragen</MudLink>
+    <span class="information-text">Jixbee wordt door jouw werkgever aangeboden</span>
+</div>

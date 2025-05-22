@@ -37,6 +37,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDb21wb25lbnRzXENhcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = custom-scope-identifier
 
+[C:/Users/larsk/Documents/Peanut Design/Jixbee/JixbeeRedesign/JixbeeRedesign/Components/Components/SecundaryTopbar.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDb21wb25lbnRzXFNlY3VuZGFyeVRvcGJhci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = custom-scope-identifier
+
 [C:/Users/larsk/Documents/Peanut Design/Jixbee/JixbeeRedesign/JixbeeRedesign/Components/Components/Topbar.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDb21wb25lbnRzXFRvcGJhci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = custom-scope-identifier
@@ -47,4 +51,12 @@ build_metadata.AdditionalFiles.CssScope = custom-scope-identifier
 
 [C:/Users/larsk/Documents/Peanut Design/Jixbee/JixbeeRedesign/JixbeeRedesign/Components/Pages/Screens/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTY3JlZW5zXEhvbWUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = custom-scope-identifier
+
+[C:/Users/larsk/Documents/Peanut Design/Jixbee/JixbeeRedesign/JixbeeRedesign/Components/Pages/Screens/Hours.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTY3JlZW5zXEhvdXJzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = custom-scope-identifier
+
+[C:/Users/larsk/Documents/Peanut Design/Jixbee/JixbeeRedesign/JixbeeRedesign/Components/Pages/Screens/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTY3JlZW5zXExvZ2luLnJhem9y
 build_metadata.AdditionalFiles.CssScope = custom-scope-identifier

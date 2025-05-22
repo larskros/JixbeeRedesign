@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("JixbeeRedesign")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f8ce7babacb2809f54b6e656a2d48439acc588a5")]
 [assembly: System.Reflection.AssemblyProductAttribute("JixbeeRedesign")]
 [assembly: System.Reflection.AssemblyTitleAttribute("JixbeeRedesign")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

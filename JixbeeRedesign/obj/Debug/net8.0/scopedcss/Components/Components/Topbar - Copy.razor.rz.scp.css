@@ -1,0 +1,32 @@
+[custom-scope-identifier] .topbar-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px;
+    background-color: var(--white);
+    padding: 4px 0 16px 0;
+}
+
+[custom-scope-identifier] .topbar-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 1;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+    [custom-scope-identifier] .topbar-item.left {
+        display: flex;
+        justify-content: flex-start;
+    }
+    [custom-scope-identifier] .topbar-item.middle {
+    }
+    [custom-scope-identifier] .topbar-item.right {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+[custom-scope-identifier] .mud-icon-size-small {
+    width: 24px !important;
+}

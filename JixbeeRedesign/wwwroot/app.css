@@ -16,10 +16,17 @@
     font-family: Poppins;
 }
 
+body {
+    overflow: hidden;
+}
+
 h1 {
     font-size: 26px;
     font-weight: 600;
     margin: 0 0 24px 0;
+}
+h1:focus-visible {
+    outline: none;
 }
 
 .divider {
@@ -32,4 +39,42 @@ h1 {
 
 .primary-icon {
     fill: var(--primarycolor100) !important;
+}
+
+/* Buttons */
+
+.primary-button {
+    background-color: var(--primarycolor100) !important;
+    color: var(--white) !important;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+    height: 38px !important;
+    border-radius: 19px !important;
+}
+
+/* MudBlazor general styling changes */
+
+/* Input fields + icons */
+.mud-input > input.mud-input-root.mud-input-root-filled {
+    padding: 14px 20px !important;
+}
+.mud-input-adornment-start.mud-input-root-filled-shrink {
+    margin: 0 !important;
+}
+.mud-icon-size-medium {
+    font-size: 20px !important;
+}
+.mud-input.mud-input-filled.mud-input-adorned-start {
+    border-radius: 8px;
+}
+
+.mud-input.mud-input-filled {
+    background-color: var(--textinput) !important;
+}
+
+/* MudLink */
+.mud-link.mud-link-underline-hover {
+    color: var(--primarycolor100) !important;
+    text-decoration: underline !important;
+    font-weight: 500 !important;
 }

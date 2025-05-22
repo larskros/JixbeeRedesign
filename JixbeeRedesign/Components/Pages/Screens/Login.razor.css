@@ -1,0 +1,68 @@
+﻿::deep .app-content {
+    width: 100vw;
+    padding: 20px;
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 100vh;
+}
+
+::deep .login-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 28px;
+}
+
+::deep .login-title {
+    font-weight: 700;
+    font-size: 30px;
+    text-align: center;
+}
+
+::deep .login-title span {
+    color: var(--primarycolor100);
+}
+
+::deep .input-field-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+::deep .input-field-wrapper .icon-button {
+    position: absolute;
+    right: 12px;
+    top: 23.5px;
+    transform: translateY(-50%);
+}
+    ::deep .input-field-wrapper .mud-link.mud-link-underline-hover {
+        font-size: 13px;
+        align-self: flex-end;
+    }
+
+::deep .mud-input-adornment-start.mud-input-root-filled-shrink .mud-icon-root.mud-svg-icon {
+    fill: var(--black33) !important;
+}
+
+::deep .mud-input > input.mud-input-root.mud-input-root-filled.mud-input-root-adorned-start::placeholder {
+    color: var(--black50);
+    font-weight: 500;
+}
+
+::deep .mud-link.mud-link-underline-hover {
+    text-align: center;
+}
+
+::deep .primary-button {
+    height: 48px !important;
+    border-radius: 24px !important;
+}
+
+::deep .information-text {
+    color: var(--black50);
+    font-weight: 500;
+    text-align: center;
+    margin: auto 40px 0 40px;
+}

@@ -94,3 +94,6 @@ C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\
 C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\JixbeeRedesign.pdb
 C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\JixbeeRedesign.genruntimeconfig.cache
 C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\ref\JixbeeRedesign.dll
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\scopedcss\Components\Pages\Screens\Login.razor.rz.scp.css
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\scopedcss\Components\Pages\Screens\Hours.razor.rz.scp.css
+C:\Users\larsk\Documents\Peanut Design\Jixbee\JixbeeRedesign\JixbeeRedesign\obj\Debug\net8.0\scopedcss\Components\Components\SecundaryTopbar.razor.rz.scp.css
