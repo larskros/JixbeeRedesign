@@ -96,6 +96,12 @@
     font-weight: 500;
 }
 
+.week-overview-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
 .day-wrapper {
     display: flex;
     align-items: center;

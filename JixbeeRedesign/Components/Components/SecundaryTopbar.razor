@@ -1,6 +1,8 @@
-﻿<div class="secundary-topbar-container">
+﻿@inject NavigationManager NavigationManager
+
+<div class="secundary-topbar-container">
 	<div class="secundary-topbar-item left">
-		<MudIcon Icon="@Icons.Material.Outlined.West" Size="Size.Small"></MudIcon>
+		<MudIconButton Icon="@Icons.Material.Outlined.West" Size="Size.Small" OnClick="@(() => NavigationManager.NavigateTo("/"))"></MudIconButton>
 	</div>
 	<div class="secundary-topbar-item middle">
 		<span>@PageTitle</span>
