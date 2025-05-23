@@ -1,0 +1,36 @@
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+artifacts/
+build/
+x64/
+x86/
+
+# Visual Studio
+.vs/
+
+# Blazor static assets output (can be ignored if not versioned manually)
+**/obj/**/staticwebassets/
+**/bin/**/staticwebassets/
+
+# Publish
+publish/
+
+# Logs
+*.log
+
+# VS Code / JetBrains
+.vscode/
+.idea/
+
+# Optional if you use node
+node_modules/

@@ -6,36 +6,37 @@
     flex-direction: column;
     gap: 20px;
     min-height: calc(100vh - 44px);
+    margin-top: 40px;
 }
 
 /* MudTabs */
-::deep .mud-tabs-tabbar-wrapper {
+::deep .hours-page .mud-tabs-tabbar-wrapper {
     transform: translateX(0px) !important;
 }
-::deep .mud-tabs-scroll-button {
+::deep .hours-page .mud-tabs-scroll-button {
     display: none;
 }
-::deep .mud-tabs-tabbar-content {
-    margin: 0 -5px;
+::deep .hours-page .mud-tabs-tabbar-content {
+    margin: 0;
 }
-::deep .mud-tabs-tabbar-content .mud-tabs-tabbar-wrapper {
-    width: auto;
-    justify-content: space-between;
-}
-::deep .mud-tabs-tabbar.mud-tabs-rounded {
+    ::deep .hours-page .mud-tabs-tabbar-content .mud-tabs-tabbar-wrapper {
+        width: auto;
+        justify-content: space-between;
+    }
+::deep .hours-page .mud-tabs-tabbar.mud-tabs-rounded {
     /*transform: translate(-5px);*/
 }
-::deep .mud-tabs-tabbar .mud-tabs-tabbar-inner {
+::deep .hours-page .mud-tabs-tabbar .mud-tabs-tabbar-inner {
     min-height: 30px;
 }
-::deep .tab-filter {
+::deep .hours-page .tab-filter {
     border-radius: 8px;
     color: var(--black100);
     font-weight: 500;
     padding: 4px 12px;
     font-size: 14px;
 }
-    ::deep .tab-filter.mud-tab {
+    ::deep .hours-page .tab-filter.mud-tab {
         color: var(--gs400);
         min-width: fit-content !important;
         min-height: 30px;
@@ -43,20 +44,38 @@
         text-transform: none;
     }
 
-    ::deep .tab-filter.active-tab {
+    ::deep .hours-page .tab-filter.active-tab {
         background-color: var(--primarycolor100);
         color: var(--white);
     }
 
-::deep .mud-tab.mud-tab-active:hover {
+::deep .hours-page .mud-tab.mud-tab-active:hover {
     background-color: var(--primarycolor100);
 }
-::deep .mud-tab:hover {
+::deep .hours-page .mud-tab:hover {
     background-color: transparent;
 }
 
-/* Available salary card */
+::deep .hours-page .mud-tooltip-root.mud-tooltip-inline {
+    min-width: 100px;
+}
 
+::deep .week-selection {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: -8px 0;
+}
+
+    ::deep .week-selection span {
+        color: var(--black50);
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+/* Available salary card */
 .savings-card {
     display: flex;
     flex-direction: column;
@@ -67,6 +86,7 @@
 .available-salary {
     display: flex;
     justify-content: space-between;
+    height: fit-content;
 }
 
 .available-salary-item {
@@ -76,48 +96,53 @@
     font-weight: 500;
 }
 
-.salary-amount {
-    font-size: 28px;
-    font-weight: 600;
-    color: var(--black100);
+.day-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
-.salary-progress-bar {
+.day-text {
+    width: 40px;
+    font-weight: 500;
+    color: var(--black50);
+    font-size: 14px;
+}
+
+.progress-bar {
     width: 100%;
     height: 6px;
     border-radius: 3px;
     background-color: var(--primarycolor15);
 }
-.salary-progress-fill {
+.progress-fill {
     width: 50%;
     height: 100%;
     border-radius: 3px;
     background-color: var(--secundarycolor100);
 }
 
-.total-withdraw {
-    color: var(--black50);
-    font-weight: 700;
-    margin-bottom: 12px;
+.day-earning {
+    width: 100px;
+    font-weight: 500;
+    font-size: 14px;
 }
-
-/* Menu Card */
-.menu-card {
+.hours-general-info {
     display: flex;
     flex-direction: column;
+    gap: 12px;
 }
 
-.menu-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-.menu-item {
+.hours-general-info-item {
     display: flex;
     align-items: center;
     gap: 16px;
-}
-.menu-item span {
-    margin-right: auto;
+    font-size: 14px;
+    font-weight: 500;
 }
 
+::deep .mud-chip-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

@@ -1,6 +1,7 @@
 :root {
     --primarycolor100: #42A5F5;
     --primarycolor15: #E4F0F9;
+    --primarycolor10: #EDF6FE;
     --secundarycolor100: #FFCC80;
     --black100: #1F1F1F;
     --black50: #909090;
@@ -10,10 +11,13 @@
     --textinput: #F4F5F6;
     --background: #F0F0F0;
     --alertsuccess: #63C132;
+    /* MudBlazor */
+    --mud-palette-primary: #42A5F5 !important;
+    --mud-palette-primary-hover: #EDF6FE !important;
 }
 
 * {
-    font-family: Poppins;
+    font-family: Poppins !important;
 }
 
 body {
@@ -36,6 +40,12 @@ h1:focus-visible {
     border-radius: 1px;
     margin: 16px 0;
 }
+.vertical-divider {
+    background-color: var(--black10);
+    width: 1px;
+    height: auto;
+    border-radius: 1px;
+}
 
 .primary-icon {
     fill: var(--primarycolor100) !important;
@@ -50,26 +60,31 @@ h1:focus-visible {
     font-size: 16px !important;
     height: 38px !important;
     border-radius: 19px !important;
+    text-transform: none !important;
 }
 
 /* MudBlazor general styling changes */
 
 /* Input fields + icons */
-.mud-input > input.mud-input-root.mud-input-root-filled {
-    padding: 14px 20px !important;
+.mud-input > input.mud-input-root.mud-input-root-outlined {
+    padding: 14px 20px 14px 8px !important;
 }
-.mud-input-adornment-start.mud-input-root-filled-shrink {
+.mud-input-adornment-start.mud-input-root-outlined-shrink {
     margin: 0 !important;
 }
 .mud-icon-size-medium {
     font-size: 20px !important;
 }
-.mud-input.mud-input-filled.mud-input-adorned-start {
+.mud-input.mud-input-outlined.mud-input-adorned-start {
     border-radius: 8px;
 }
 
-.mud-input.mud-input-filled {
+.mud-input.mud-input-outlined {
     background-color: var(--textinput) !important;
+}
+.mud-input.mud-input-outlined .mud-input-outlined-border {
+    border: none;
+    outline: none;
 }
 
 /* MudLink */

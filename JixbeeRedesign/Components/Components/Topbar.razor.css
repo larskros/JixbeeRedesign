@@ -1,9 +1,14 @@
 ﻿::deep .topbar-container {
     display: flex;
     justify-content: space-between;
-    margin: 0 20px;
     background-color: var(--white);
-    padding: 4px 0 16px 0;
+    padding: 4px 20px 16px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: fit-content;
+    z-index: 999;
 }
 
 ::deep .topbar-item {

@@ -2,7 +2,7 @@
 @inject NavigationManager NavigationManager
 
 <Topbar />
-<div class="app-content">
+<div class="app-content app-content-topbar">
     <MudTabs Rounded="true"
              TabPanelClass="tab-filter"
              ActiveTabClass="active-tab"
@@ -25,8 +25,8 @@
                 Netto beschikbaar
             </div>
         </div>
-		<div class="salary-progress-bar">
-			<div class="salary-progress-fill"></div>
+		<div class="progress-bar">
+			<div class="progress-fill"></div>
         </div>
         <span class="total-withdraw">Reeds totaal netto opgenomen: €0,-</span>
         <MudButton Class="primary-button" OnClick="HandleWithdraw">Opnemen</MudButton>

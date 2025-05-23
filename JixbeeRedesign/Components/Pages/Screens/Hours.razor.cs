@@ -13,6 +13,14 @@ namespace JixbeeRedesign.Components.Pages.Screens
             "Week", "Maand", "Jaar"
         };
 
+        private int amountMonday { get; set; } = 200;
+        private int amountTuesday { get; set; } = 200;
+        private int amountWednesday { get; set; } = 50;
+        private int amountThursday { get; set; } = 0;
+        private int amountFriday { get; set; } = 0;
+        private int amountSaturday { get; set; } = 0;
+        private int amountSunday { get; set; } = 0;
+
         private int activeIndex = 0;
 
         private async Task OnActiveIndexChanged(int index)
