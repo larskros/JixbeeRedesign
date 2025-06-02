@@ -1,0 +1,58 @@
+﻿::deep .app-content {
+    width: 100vw;
+    padding: 20px;
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 100vh;
+}
+
+.payout-success-page {
+    position: relative;
+    padding-top: 80px;
+}
+
+.payout-success-page ::deep .mud-icon-root.mud-svg-icon {
+    fill: var(--alertsuccess);
+    font-size: 80px !important;
+    align-self: center;
+}
+
+::deep .payout-success-page .primary-button {
+    margin-top: 16px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.withdrawal-overview-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.withdrawal-overview-info-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 14px;
+    font-weight: 500;
+}
+    .withdrawal-overview-info-item ::deep .mud-icon-root.mud-svg-icon {
+        background-color: var(--primarycolor10);
+        width: 32px;
+        height: 32px;
+        padding: 6px;
+        border-radius: 50%;
+    }
+
+    .withdrawal-overview-info-details {
+        display: flex;
+        flex-direction: column;
+    }
+.withdrawal-overview-info-details .header {
+    font-size: 10px;
+    color: var(--black50);
+}

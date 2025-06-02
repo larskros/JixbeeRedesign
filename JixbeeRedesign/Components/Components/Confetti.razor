@@ -1,0 +1,23 @@
+﻿<svg class="confetti-piece" style="width: 16px; height: 16px; top:@Top%; left:@Left%; animation-delay:@(Delay)s;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+	<path fill="@ConfettiColor" style="transform: rotate(@(ConfettiRotation)deg); transform-origin: center;"
+		  d="M48,25 L58,88 L80,80 L80,21">
+	</path>
+</svg>
+
+@code {
+
+	[Parameter] public string ConfettiColor { get; set; }
+	[Parameter] public int ConfettiRotation { get; set; }
+	[Parameter] public double Top { get; set; }
+	[Parameter] public double Left { get; set; }
+	[Parameter] public string Delay { get; set; }
+
+	protected override void OnInitialized()
+	{
+		if (ConfettiRotation == 0)
+		{
+			var rand = new Random();
+			ConfettiRotation = rand.Next(0, 360);
+		}
+	}
+}

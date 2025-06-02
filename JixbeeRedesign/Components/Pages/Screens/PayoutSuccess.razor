@@ -1,0 +1,43 @@
+﻿@page "/uitbetaling-succesvol"
+@inject NavigationManager NavigationManager
+
+<div class="app-content payout-success-page">
+    
+    <MudIcon Icon="@Icons.Material.Rounded.CheckCircle" />
+	<h2>Je opname wordt verwerkt</h2>
+
+    <Card Class="withdrawal-overview-card">
+        <div class="withdrawal-overview-info-item">
+            <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.Euro" />
+            <div class="withdrawal-overview-info-details">
+                <span class="header">Bedrag</span>
+                <span>€750,00</span>
+            </div>
+        </div>
+        <div class="withdrawal-overview-info-item">
+            <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.CreditCard" />
+            <div class="withdrawal-overview-info-details">
+                <span class="header">IBAN</span>
+                <span>NL00 INGB 0000 0000 0000</span>
+            </div>
+        </div>
+        <div class="withdrawal-overview-info-item">
+            <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.AccountCircle" />
+            <div class="withdrawal-overview-info-details">
+                <span class="header">Naam ontvanger</span>
+                <span>John de Vries</span>
+            </div>
+        </div>
+        <MudButton Class="primary-button" OnClick="HandleComplete">Voltooien</MudButton>
+    </Card>
+    <div class="confetti-container">
+        @foreach (var confetti in ConfettiList)
+        {
+            <Confetti ConfettiColor="@confetti.Color"
+                      ConfettiRotation="@confetti.Rotation"
+                      Top="@confetti.Top"
+                      Left="@confetti.Left"
+                      Delay="@confetti.Delay" />
+        }
+    </div>
+</div>

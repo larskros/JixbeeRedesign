@@ -23,6 +23,7 @@ namespace JixbeeRedesign.Components.Pages.Screens
 
         private int activeIndex = 0;
 
+        
         private async Task OnActiveIndexChanged(int index)
         {
             activeIndex = index;

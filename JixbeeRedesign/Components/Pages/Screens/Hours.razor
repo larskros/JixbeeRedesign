@@ -43,49 +43,49 @@
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: @(amountMonday + "%")"></div>
                 </div>
-                <span class="day-earning">€@amountMonday</span>
+                <span class="day-earning @(amountMonday > 0 ? "" : "greyed-out")">€@amountMonday</span>
             </div>
 			<div class="day-wrapper">
                 <span class="day-text">Di</span>
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: @(amountTuesday + "%")"></div>
                 </div>
-                <span class="day-earning">€@amountTuesday</span>
+                <span class="day-earning @(amountTuesday > 0 ? "" : "greyed-out")">€@amountTuesday</span>
             </div>
 			<div class="day-wrapper">
                 <span class="day-text">Wo</span>
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: @(amountWednesday + "%")"></div>
                 </div>
-                <span class="day-earning">€@amountWednesday</span>
+                <span class="day-earning @(amountWednesday > 0 ? "" : "greyed-out")">€@amountWednesday</span>
             </div>
 			<div class="day-wrapper">
                 <span class="day-text">Do</span>
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: @(amountThursday + "%")"></div>
                 </div>
-                <span class="day-earning">€@amountThursday</span>
+                <span class="day-earning @(amountThursday > 0 ? "" : "greyed-out")">€@amountThursday</span>
             </div>
 			<div class="day-wrapper">
                 <span class="day-text">Vr</span>
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: @(amountFriday + "%")"></div>
                 </div>
-                <span class="day-earning">€@amountFriday</span>
+                <span class="day-earning @(amountFriday > 0 ? "" : "greyed-out")">€@amountFriday</span>
             </div>
 			<div class="day-wrapper">
                 <span class="day-text">Za</span>
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: @(amountSaturday + "%")"></div>
                 </div>
-                <span class="day-earning">€@amountSaturday</span>
+                <span class="day-earning @(amountSaturday > 0 ? "" : "greyed-out")">€@amountSaturday</span>
             </div>
 			<div class="day-wrapper">
                 <span class="day-text">Zo</span>
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: @(amountSunday + "%")"></div>
                 </div>
-                <span class="day-earning">€@amountSunday</span>
+                <span class="day-earning @(amountSunday > 0 ? "" : "greyed-out")">€@amountSunday</span>
             </div>
         </div>
 		<div class="divider"></div>
