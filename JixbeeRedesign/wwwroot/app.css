@@ -6,6 +6,7 @@
     --black100: #1F1F1F;
     --black50: #909090;
     --black33: #B5B5B5;
+    --black20: #D2D2D2;
     --black10: #E9E9E9;
     --white: #FFFFFF;
     --textinput: #F4F5F6;
@@ -29,15 +30,19 @@ h1 {
     font-weight: 600;
     margin: 0 0 0 0;
 }
-h1:focus-visible, h2:focus-visible {
-    outline: none;
-}
-
 h2 {
     font-size: 22px;
     font-weight: 600;
     margin: 0 0 0 0;
 }
+h3 {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0 0 0 0;
+}
+    h1:focus-visible, h2:focus-visible, h3:focus-visible {
+        outline: none;
+    }
 
 .divider {
     background-color: var(--black10);
@@ -66,6 +71,14 @@ h2 {
     height: 38px !important;
     border-radius: 19px !important;
     text-transform: none !important;
+}
+    .primary-button.mud-button-root:disabled {
+        background-color: var(--black20) !important;
+    }
+
+.close-button {
+    fill: var(--black100);
+    font-size: 24px;
 }
 
 /* MudBlazor general styling changes */

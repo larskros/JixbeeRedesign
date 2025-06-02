@@ -1,0 +1,31 @@
+﻿@* @if (isShown)
+{ *@
+<div class="popup-background" style="visibility: @Visible; background-color: @PopupBgColor">
+		<div class="popup-container" style="height: @(PopupHeight)%">
+			<div class="popup-topbar">
+				<h3>Vakantiegeld</h3>
+				<MudIconButton Class="close-button" OnClick="ClosePopup" Icon="@Icons.Material.Outlined.Cancel" />
+			</div>
+			<div class="divider"></div>
+			@ChildContent
+			<MudButton Disabled="@ButtonDisabled" Class="primary-button">@popupButtonText</MudButton>
+		</div>
+	</div>
+@* } *@
+
+	@code {
+	[Parameter] public RenderFragment? ChildContent { get; set; }
+	[Parameter] public bool isShown { get; set; }
+	private bool ButtonDisabled => WithdrawAmount <= 0;
+	[Parameter] public int PopupHeight { get; set; } = 0;
+	[Parameter] public string PopupBgColor { get; set; } = "rgba(31, 31, 31, 0)";
+	[Parameter] public string Visible { get; set; } = "hidden";
+	[Parameter] public string popupButtonText { get; set; } = "Bevestigen";
+	[Parameter] public EventCallback ClosePopup { get; set; }
+	[Parameter] public int WithdrawAmount { get; set; }
+
+	protected override void OnInitialized()
+	{
+		
+	}
+}
