@@ -1,4 +1,4 @@
-﻿::deep .secundary-topbar-container {
+﻿::deep .secondary-topbar-container {
     display: flex;
     align-items: center;
     position: relative;
@@ -6,7 +6,7 @@
     padding: 0 20px;
 }
 
-::deep .secundary-topbar-item {
+::deep .secondary-topbar-item {
     /*display: flex;
     align-items: center;
     justify-content: center;
@@ -16,16 +16,16 @@
     font-size: 12px;*/
 }
 
-    ::deep .secundary-topbar-item.left {
+    ::deep .secondary-topbar-item.left {
         margin-right: auto;
     }
-    ::deep .secundary-topbar-item.middle {
+    ::deep .secondary-topbar-item.middle {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
         font-weight: 600;
     }
-    ::deep .secundary-topbar-item.right {
+    ::deep .secondary-topbar-item.right {
     }
 
 ::deep .mud-icon-size-small {

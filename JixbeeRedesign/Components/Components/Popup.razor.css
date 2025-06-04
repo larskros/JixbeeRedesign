@@ -6,6 +6,7 @@
     height: 100vh;
     z-index: 9998;
     transition: background-color .5s;
+    overflow: hidden;
 }
 .popup-container {
     display: flex;

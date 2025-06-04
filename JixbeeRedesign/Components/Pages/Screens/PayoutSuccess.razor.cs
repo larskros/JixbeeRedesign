@@ -24,7 +24,7 @@ namespace JixbeeRedesign.Components.Pages.Screens
             for (int i = 0; i < 30; i++)
             {
                 ConfettiList.Add(new ConfettiData(
-                    Color: i % 2 == 0 ? "var(--primarycolor100)" : "var(--secundarycolor100)", // blue/yellow
+                    Color: i % 2 == 0 ? "var(--primarycolor100)" : "var(--secondarycolor100)", // blue/yellow
                     Rotation: rand.Next(0, 360),
                     Top: Math.Round(60 + rand.NextDouble() * 40, 0),
 					Left: Math.Round(rand.NextDouble() * 100, 0),

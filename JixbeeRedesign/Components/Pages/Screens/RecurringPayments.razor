@@ -1,0 +1,34 @@
+﻿@page "/opnames/gepland"
+@inject NavigationManager NavigationManager
+
+<SecondaryTopbar PageTitle="Ingeplande opnames" />
+<div class="app-content recurring-payments-page">
+    @foreach (var item in allRecurringPayments)
+    {
+        <Card Class="recurring-payment-card">
+            <div class="recurring-payment-title">
+                @item.Title
+            </div>
+		    <div class="recurring-payment-day">
+                <div>@item.DayOfTheMonth<span>e</span></div>
+			    <span class="sub-text">maandelijks</span>
+            </div>
+            @if (item.RemainingPayments == 1)
+            {
+                <MudChip T="string" Variant="Variant.Text" Color="Color.Warning" Class="recurring-payment-remaining">
+                    <MudIcon Class="secondary-icon" Icon="@Icons.Material.Outlined.Replay" />
+                    @item.RemainingPayments resterend termijn
+                </MudChip>
+            } else
+            {
+                <MudChip T="string" Variant="Variant.Text" Color="Color.Primary" Class="recurring-payment-remaining">
+                    <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.Replay" />
+                    @item.RemainingPayments resterende termijnen
+                </MudChip>
+            }
+            <div class="recurring-payment-amount">
+                €@item.Amount
+            </div>
+        </Card>
+    }
+</div>

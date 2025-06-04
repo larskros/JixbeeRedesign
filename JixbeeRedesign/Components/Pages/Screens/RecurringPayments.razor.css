@@ -1,0 +1,45 @@
+﻿::deep .app-content {
+    width: 100vw;
+    padding: 20px;
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 100vh;
+}
+
+.recurring-payment-card {
+    display: grid;
+    grid-template:
+        "title day"
+        "remaining amount";
+    justify-content: space-between;
+    min-height: 120px;
+}
+
+.recurring-payment-title {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.recurring-payment-day {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: right;
+    line-height: 100%;
+}
+    .recurring-payment-day .sub-text {
+        font-size: 10px;
+        color: var(--black50);
+    }
+
+::deep .recurring-payment-remaining {
+    align-self: flex-end;
+    margin: 0;
+}
+
+.recurring-payment-amount {
+    font-weight: 500;
+    justify-self: flex-end;
+    align-self: flex-end;
+}

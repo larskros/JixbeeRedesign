@@ -125,7 +125,7 @@
     width: 50%;
     height: 100%;
     border-radius: 3px;
-    background-color: var(--secundarycolor100);
+    background-color: var(--secondarycolor100);
 }
 
 .day-earning {
@@ -156,4 +156,5 @@
     align-items: center;
     gap: 10px;
     font-size: 12px;
+    font-weight: 500;
 }

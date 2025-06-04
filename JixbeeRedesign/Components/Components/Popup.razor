@@ -1,17 +1,14 @@
-﻿@* @if (isShown)
-{ *@
-<div class="popup-background" style="visibility: @Visible; background-color: @PopupBgColor">
-		<div class="popup-container" style="height: @(PopupHeight)%">
-			<div class="popup-topbar">
-				<h3>Vakantiegeld</h3>
-				<MudIconButton Class="close-button" OnClick="ClosePopup" Icon="@Icons.Material.Outlined.Cancel" />
-			</div>
-			<div class="divider"></div>
-			@ChildContent
-			<MudButton Disabled="@ButtonDisabled" Class="primary-button">@popupButtonText</MudButton>
+﻿<div class="popup-background" onclick="@ClosePopup" style="visibility: @Visible; background-color: @PopupBgColor">
+	<div class="popup-container" style="height: @(PopupHeight)%">
+		<div class="popup-topbar">
+			<h3>Vakantiegeld</h3>
+			<MudIconButton Class="close-button" OnClick="ClosePopup" Icon="@Icons.Material.Outlined.Cancel" />
 		</div>
+		<div class="divider"></div>
+		@ChildContent
+		<MudButton Disabled="@ButtonDisabled" Class="primary-button">@popupButtonText</MudButton>
 	</div>
-@* } *@
+</div>
 
 	@code {
 	[Parameter] public RenderFragment? ChildContent { get; set; }
@@ -22,10 +19,11 @@
 	[Parameter] public string Visible { get; set; } = "hidden";
 	[Parameter] public string popupButtonText { get; set; } = "Bevestigen";
 	[Parameter] public EventCallback ClosePopup { get; set; }
-	[Parameter] public int WithdrawAmount { get; set; }
+	[Parameter] public EventCallback OnClose { get; set; }
+	[Parameter] public int? WithdrawAmount { get; set; }
 
 	protected override void OnInitialized()
 	{
-		
+
 	}
 }
