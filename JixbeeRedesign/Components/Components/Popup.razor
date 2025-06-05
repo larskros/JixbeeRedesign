@@ -1,13 +1,13 @@
 ﻿<div class="popup-background" onclick="@ClosePopup" style="visibility: @Visible; background-color: @PopupBgColor">
-	<div class="popup-container" style="height: @(PopupHeight)%">
-		<div class="popup-topbar">
-			<h3>Vakantiegeld</h3>
-			<MudIconButton Class="close-button" OnClick="ClosePopup" Icon="@Icons.Material.Outlined.Cancel" />
-		</div>
-		<div class="divider"></div>
-		@ChildContent
-		<MudButton Disabled="@ButtonDisabled" Class="primary-button">@popupButtonText</MudButton>
+</div>
+<div class="popup-container" style="height: @(PopupHeight)%; visibility: @Visible;">
+	<div class="popup-topbar">
+		<h3>@PopupTitle</h3>
+		<MudIconButton Class="close-button" OnClick="ClosePopup" Icon="@Icons.Material.Outlined.Cancel" />
 	</div>
+	<div class="divider"></div>
+	@ChildContent
+	<MudButton Disabled="@ButtonDisabled" Class="primary-button">@PopupButtonText</MudButton>
 </div>
 
 	@code {
@@ -15,9 +15,10 @@
 	[Parameter] public bool isShown { get; set; }
 	private bool ButtonDisabled => WithdrawAmount <= 0;
 	[Parameter] public int PopupHeight { get; set; } = 0;
+	[Parameter] public string? PopupTitle { get; set; }
 	[Parameter] public string PopupBgColor { get; set; } = "rgba(31, 31, 31, 0)";
 	[Parameter] public string Visible { get; set; } = "hidden";
-	[Parameter] public string popupButtonText { get; set; } = "Bevestigen";
+	[Parameter] public string PopupButtonText { get; set; } = "Bevestigen";
 	[Parameter] public EventCallback ClosePopup { get; set; }
 	[Parameter] public EventCallback OnClose { get; set; }
 	[Parameter] public int? WithdrawAmount { get; set; }

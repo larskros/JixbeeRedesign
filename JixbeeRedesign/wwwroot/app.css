@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 :root {
     --primarycolor100: #42A5F5;
     --primarycolor15: #E4F0F9;
@@ -84,8 +86,24 @@ h3 {
     font-size: 24px;
 }
 
-/* MudBlazor general styling changes */
+/* Icons Buttons */
 
+.primary-icon-button {
+    background-color: var(--primarycolor100);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    color: var(--white);
+}
+    .primary-icon-button:hover, .primary-icon-button:active {
+        background-color: var(--primarycolor100);
+        opacity: .7;
+    }
+    .primary-icon-button span svg {
+        font-size: 32px;
+    }
+
+/* MudBlazor general styling changes */
 /* Input fields + icons */
 .mud-input > input.mud-input-root.mud-input-root-outlined {
     padding: 14px 20px 14px 8px !important;

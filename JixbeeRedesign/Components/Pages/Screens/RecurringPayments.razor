@@ -1,5 +1,6 @@
 ﻿@page "/opnames/gepland"
 @inject NavigationManager NavigationManager
+<MudPopoverProvider />
 
 <SecondaryTopbar PageTitle="Ingeplande opnames" />
 <div class="app-content recurring-payments-page">
@@ -31,4 +32,31 @@
             </div>
         </Card>
     }
+    <MudIconButton Class="primary-icon-button floating-action-button" OnClick="HandleNewRecurringPayment" Icon="@Icons.Material.Outlined.PostAdd" Size="Size.Large" />
+    <Popup isShown="showPopup" 
+           PopupHeight="@popupHeight" 
+           Visible="@visible" 
+           PopupTitle="Nieuwe opname"
+           PopupBgColor="@popupBgColor" 
+           PopupButtonText="@popupButtonText" 
+           ClosePopup="ClosePopup"
+    >
+        <div class="popup-content">
+            <MudTextField T="string" Placeholder="Naam"/>
+            <MudNumericField T="string"
+                             @bind-Value="@recurringPaymentAmount"
+                             HideSpinButtons="true"
+                             Variant="Variant.Text"
+                             Placeholder="0,00"
+                             Underline="false"
+                             Adornment="Adornment.Start"
+                             AdornmentIcon="@Icons.Material.Filled.Euro" />
+            <MudSelect T="int" Clearable="true">
+                @foreach(var day in days)
+                {
+                    <MudSelectItem Value="@day" />
+                }
+            </MudSelect>
+        </div>
+    </Popup>
 </div>

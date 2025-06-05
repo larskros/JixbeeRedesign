@@ -10,6 +10,14 @@ namespace JixbeeRedesign.Components.Pages.Screens
 
         private List<RecurringPayment> allRecurringPayments = new List<RecurringPayment>();
 
+        private bool showPopup { get; set; }
+        private int popupHeight { get; set; } = 0;
+        private string popupBgColor { get; set; } = "rgba(31, 31, 31, 0)";
+        private string visible { get; set; } = "hidden";
+        private string popupButtonText { get; set; } = "Inplannen";
+        private string? recurringPaymentAmount { get; set; }
+        private int[] days = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28 };
+
         public class RecurringPayment
         {
             public string? Title { get; set; }
@@ -60,9 +68,22 @@ namespace JixbeeRedesign.Components.Pages.Screens
             StateHasChanged();
         }
 
-        private void HandleWithdraw()
+        private void HandleNewRecurringPayment()
         {
-
+            showPopup = true;
+            popupHeight = 90;
+            popupBgColor = "rgba(31, 31, 31, 0.5)";
+            visible = "visible";
+            StateHasChanged();
+        }
+        private async void ClosePopup()
+        {
+            showPopup = false;
+            popupHeight = 0;
+            popupBgColor = "rgba(31, 31, 31, 0)";
+            await Task.Delay(350);
+            visible = "hidden";
+            StateHasChanged();
         }
     }
 }

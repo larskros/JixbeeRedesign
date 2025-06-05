@@ -1,4 +1,4 @@
-﻿::deep .app-content {
+﻿.app-content {
     width: 100vw;
     padding: 20px;
     background-color: var(--background);
@@ -6,6 +6,10 @@
     flex-direction: column;
     gap: 20px;
     min-height: 100vh;
+}
+
+.recurring-payments-page {
+    position: relative;
 }
 
 .recurring-payment-card {
@@ -42,4 +46,10 @@
     font-weight: 500;
     justify-self: flex-end;
     align-self: flex-end;
+}
+
+::deep .floating-action-button {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
 }
