@@ -128,9 +128,12 @@
     gap: 16px;
     padding: 16px 0;
 }
-.menu-item span {
-    margin-right: auto;
-}
+    .menu-item:active {
+        background-color: var(--textinput);
+    }
+    .menu-item span {
+        margin-right: auto;
+    }
 
 /* Popup content */
 .popup-content {

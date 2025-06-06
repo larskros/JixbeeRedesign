@@ -27,7 +27,7 @@ namespace JixbeeRedesign.Components.Pages.Screens
             public string? Title { get; set; }
             public int DayOfTheMonth { get; set; }
             public int RemainingPayments { get; set; }
-            public int Amount { get; set; }
+            public double Amount { get; set; }
         }
 
         private int activeIndex = 0;

@@ -25,5 +25,10 @@ namespace JixbeeRedesign.Components.Pages.Screens
                 PasswordInput = InputType.Text;
             }
         }
+
+        public void HandleLogin()
+        {
+            NavigationManager.NavigateTo("/");
+        }
     }
 }

@@ -60,7 +60,13 @@
     min-width: 100px;
 }
 
-::deep .week-selection {
+.time-selection-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+::deep .time-selection {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -69,11 +75,27 @@
     margin: -8px 0;
 }
 
-    ::deep .week-selection span {
+    ::deep .time-selection span {
         color: var(--black50);
         font-size: 15px;
         font-weight: 600;
+        text-transform: capitalize;
     }
+    ::deep .time-selection svg {
+        border-radius: 12px;
+    }
+    ::deep .time-selection svg:hover {
+        background-color: var(--black10);
+    }
+    ::deep .time-selection svg:active {
+        background-color: var(--black20);
+    }
+
+.text-link-button {
+    font-size: 14px;
+    text-align: center;
+    color: var(--primarycolor100);
+}
 
 /* Available salary card */
 .savings-card {
@@ -109,7 +131,7 @@
 }
 
 .day-text {
-    width: 40px;
+    min-width: 32px;
     font-weight: 500;
     color: var(--black50);
     font-size: 14px;
@@ -129,7 +151,7 @@
 }
 
 .day-earning {
-    width: 100px;
+    min-width: 56px;
     font-weight: 500;
     font-size: 14px;
 }

@@ -1,6 +1,11 @@
 using JixbeeRedesign.Components;
+using JixbeeRedesign.Services;
 using Microsoft.AspNetCore.Hosting.StaticWebAssets;
 using MudBlazor.Services;
+using System.Globalization;
+
+CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("nl-NL");
+CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("nl-NL");
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +15,9 @@ builder.Services.AddRazorComponents()
 
 StaticWebAssetsLoader.UseStaticWebAssets(builder.Environment, builder.Configuration);
 builder.Services.AddMudServices();
+
+// Services
+builder.Services.AddScoped<WithdrawStateService>();
 
 var app = builder.Build();
 

@@ -42,7 +42,7 @@ namespace JixbeeRedesign.Components.Pages.Screens
 
         private void HandleComplete()
         {
-
+            NavigationManager.NavigateTo("/");
         }
     }
 }

@@ -1,5 +1,7 @@
-﻿<div class="topbar-container">
-	<div class="topbar-item left">
+﻿@inject NavigationManager NavigationManager
+
+<div class="topbar-container">
+	<div class="topbar-item left" onclick="@GoToLoginPage">
 		<MudIcon Icon="@Icons.Material.Outlined.Person" Size="Size.Small"></MudIcon>
 		<span>Hi, John</span>
 	</div>
@@ -13,5 +15,8 @@
 </div>
 
 @code {
-
+	private void GoToLoginPage() 
+	{
+		NavigationManager.NavigateTo("/login");
+	}
 }

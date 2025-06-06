@@ -1,4 +1,5 @@
 ﻿@page "/login"
+@inject NavigationManager NavigationManager
 
 <div class="app-content login-page">
     <MudImage Class="align-self-center mb-10" Src="/img/jixbee-logo-zwart.png" Height="24" />
@@ -19,7 +20,7 @@
             <MudIcon Class="primary-icon icon-button" Icon="@PasswordInputIcon" onclick="@TogglePasswordVisiblity" />
             <MudLink Href="#">Wachtwoord vergeten</MudLink>
         </div>
-        <MudButton Class="primary-button">Log in</MudButton>
+        <MudButton OnClick="HandleLogin" Class="primary-button">Log in</MudButton>
     </Card>
     <MudLink Href="#">Uitnodiging aanvragen</MudLink>
     <span class="information-text">Jixbee wordt door jouw werkgever aangeboden</span>

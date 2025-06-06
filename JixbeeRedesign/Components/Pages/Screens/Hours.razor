@@ -4,6 +4,7 @@
 <SecondaryTopbar PageTitle="Gewerkte uren" />
 <div class="app-content hours-page">
     <MudTabs Rounded="true"
+             ActivePanelIndexChanged="OnActiveIndexChanged"
              Class="wide-tabs"
              TabPanelClass="tab-filter"
              ActiveTabClass="active-tab"
@@ -16,101 +17,188 @@
         }
     </MudTabs>
 
-    <div class="week-selection">
-        <MudIcon Icon="@Icons.Material.Outlined.ChevronLeft" />
-        <span>Week 2, 2025</span>
-        <MudIcon Icon="@Icons.Material.Outlined.ChevronRight" />
-    </div>
+    @if (activeIndex == 0) {
+        <div class="time-selection-wrapper">
+            <div class="time-selection">
+                <MudIcon Icon="@Icons.Material.Outlined.ChevronLeft" onclick="@GoBackTimeSelection" />
+                <span>Week @currentWeek, @currentYear</span>
+                <MudIcon Icon="@Icons.Material.Outlined.ChevronRight" onclick="@GoForwardTimeSelection" />
+            </div>
+            @if (isNotCurrentDay) {
+                <div class="text-link-button" onclick="@ShowToday">
+                    Toon deze week
+                </div>
+            }
+        </div>
 
-    <Card Class="hours-card">
-        <div class="available-salary">
-            <div class="available-salary-item">
-				<span class="salary-amount">30</span>
-                Gewerkte uren
+        <Card Class="hours-card">
+            <div class="available-salary">
+                <div class="available-salary-item">
+                    <span class="salary-amount">30</span>
+                    Gewerkte uren
+                </div>
+                <div class="vertical-divider"></div>
+                <div class="available-salary-item">
+                    <span class="salary-amount">€@weeklyTotal.ToString("N2")</span>
+                    Verdiend deze periode
+                </div>
             </div>
-			<div class="vertical-divider"></div>
-            <div class="available-salary-item">
-                <span class="salary-amount">€450</span>
-                Verdiend deze week
+        </Card>
+        <Card Class="week-overview-card">
+            <h1>Weekoverzicht</h1>
+            <div class="weekly-overview">
+                @foreach (var day in WeekDays)
+                {
+                    <ProgressBar TextLabel="@day.Label" Amount="@day.Amount" MaxAmount="@highestWeekEarning" />
+                }
             </div>
+            <div class="divider"></div>
+            <div class="hours-general-info">
+                <div class="hours-general-info-item">
+                    <MudChip T="string" Variant="Variant.Text" Color="Color.Primary">
+                        <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.Payments" />
+                        Bruto uurloon
+                    </MudChip>
+                    <span>€15,00</span>
+                </div>
+                <div class="hours-general-info-item">
+                    <MudChip T="string" Variant="Variant.Text" Color="Color.Primary">
+                        <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.DateRange" />
+                        Dagen tot verloning
+                    </MudChip>
+                    <span>12</span>
+                </div>
+                <div class="hours-general-info-item">
+                    <MudChip T="string" Variant="Variant.Text" Color="Color.Primary">
+                        <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.PriceCheck" />
+                        Reeds uitbetaald
+                    </MudChip>
+                    <span>€400,00</span>
+                </div>
+            </div>
+        </Card>
+    }
+    else if (activeIndex == 1) {
+        <div class="time-selection">
+            <MudIcon Icon="@Icons.Material.Outlined.ChevronLeft" onclick="@GoBackTimeSelection" />
+            <span>@CurrentMonthName @currentYear</span>
+            <MudIcon Icon="@Icons.Material.Outlined.ChevronRight" onclick="@GoForwardTimeSelection" />
         </div>
-    </Card>
-    <Card Class="week-overview-card">
-		<h1>Weekoverzicht</h1>
-		<div class="weekly-overview">
-			<div class="day-wrapper">
-				<span class="day-text">Ma</span>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: @(amountMonday + "%")"></div>
-                </div>
-                <span class="day-earning @(amountMonday > 0 ? "" : "greyed-out")">€@amountMonday</span>
+
+        @if (isNotCurrentDay)
+        {
+            <div class="text-link-button" onclick="@ShowToday">
+                Toon deze maand
             </div>
-			<div class="day-wrapper">
-                <span class="day-text">Di</span>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: @(amountTuesday + "%")"></div>
+        }
+
+        <Card Class="hours-card">
+            <div class="available-salary">
+                <div class="available-salary-item">
+                    <span class="salary-amount">30</span>
+                    Gewerkte uren
                 </div>
-                <span class="day-earning @(amountTuesday > 0 ? "" : "greyed-out")">€@amountTuesday</span>
-            </div>
-			<div class="day-wrapper">
-                <span class="day-text">Wo</span>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: @(amountWednesday + "%")"></div>
+                <div class="vertical-divider"></div>
+                <div class="available-salary-item">
+                    <span class="salary-amount">€@weeklyTotal.ToString("N2")</span>
+                    Verdiend deze periode
                 </div>
-                <span class="day-earning @(amountWednesday > 0 ? "" : "greyed-out")">€@amountWednesday</span>
             </div>
-			<div class="day-wrapper">
-                <span class="day-text">Do</span>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: @(amountThursday + "%")"></div>
+        </Card>
+        <Card Class="week-overview-card">
+            <h1>Maandoverzicht</h1>
+            <div class="weekly-overview">
+                @foreach (var day in WeekDays)
+                {
+                    <ProgressBar TextLabel="@day.Label" Amount="@day.Amount" MaxAmount="@highestWeekEarning" />
+                }
+            </div>
+            <div class="divider"></div>
+            <div class="hours-general-info">
+                <div class="hours-general-info-item">
+                    <MudChip T="string" Variant="Variant.Text" Color="Color.Primary">
+                        <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.Payments" />
+                        Bruto uurloon
+                    </MudChip>
+                    <span>€15,00</span>
                 </div>
-                <span class="day-earning @(amountThursday > 0 ? "" : "greyed-out")">€@amountThursday</span>
-            </div>
-			<div class="day-wrapper">
-                <span class="day-text">Vr</span>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: @(amountFriday + "%")"></div>
+                <div class="hours-general-info-item">
+                    <MudChip T="string" Variant="Variant.Text" Color="Color.Primary">
+                        <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.DateRange" />
+                        Dagen tot verloning
+                    </MudChip>
+                    <span>12</span>
                 </div>
-                <span class="day-earning @(amountFriday > 0 ? "" : "greyed-out")">€@amountFriday</span>
-            </div>
-			<div class="day-wrapper">
-                <span class="day-text">Za</span>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: @(amountSaturday + "%")"></div>
+                <div class="hours-general-info-item">
+                    <MudChip T="string" Variant="Variant.Text" Color="Color.Primary">
+                        <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.PriceCheck" />
+                        Reeds uitbetaald
+                    </MudChip>
+                    <span>€400,00</span>
                 </div>
-                <span class="day-earning @(amountSaturday > 0 ? "" : "greyed-out")">€@amountSaturday</span>
             </div>
-			<div class="day-wrapper">
-                <span class="day-text">Zo</span>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: @(amountSunday + "%")"></div>
-                </div>
-                <span class="day-earning @(amountSunday > 0 ? "" : "greyed-out")">€@amountSunday</span>
-            </div>
+        </Card>
+    }
+    else if (activeIndex == 2) {
+        <div class="time-selection">
+            <MudIcon Icon="@Icons.Material.Outlined.ChevronLeft" onclick="@GoBackTimeSelection" />
+            <span>@currentYear</span>
+            <MudIcon Icon="@Icons.Material.Outlined.ChevronRight" onclick="@GoForwardTimeSelection" />
         </div>
-		<div class="divider"></div>
-        <div class="hours-general-info">
-            <div class="hours-general-info-item">
-                <MudChip T="string" Variant="Variant.Text" Color="Color.Primary">
-                    <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.Payments" />
-                    Bruto uurloon
-                </MudChip>
-                <span>€15,00</span>
+
+        @if (isNotCurrentDay)
+        {
+            <div class="text-link-button" onclick="@ShowToday">
+                Toon dit jaar
             </div>
-            <div class="hours-general-info-item">
-                <MudChip T="string" Variant="Variant.Text" Color="Color.Primary">
-                    <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.DateRange" />
-                    Dagen tot verloning
-                </MudChip>
-                <span>12</span>
+        }
+
+        <Card Class="hours-card">
+            <div class="available-salary">
+                <div class="available-salary-item">
+                    <span class="salary-amount">1381</span>
+                    Gewerkte uren
+                </div>
+                <div class="vertical-divider"></div>
+                <div class="available-salary-item">
+                    <span class="salary-amount">€@yearlyTotal.ToString("N2")</span>
+                    Verdiend deze periode
+                </div>
             </div>
-            <div class="hours-general-info-item">
-                <MudChip T="string" Variant="Variant.Text" Color="Color.Primary">
-                    <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.PriceCheck" />
-                    Reeds uitbetaald
-                </MudChip>
-                <span>€400,00</span>
+        </Card>
+        <Card Class="week-overview-card">
+            <h1>Jaaroverzicht</h1>
+            <div class="weekly-overview">
+                @foreach (var month in Months)
+                {
+                    <ProgressBar TextLabel="@month.Label" Amount="@month.Amount" MaxAmount="@highestMonthEarning" />
+                }
             </div>
-        </div>
-    </Card>
+            <div class="divider"></div>
+            <div class="hours-general-info">
+                <div class="hours-general-info-item">
+                    <MudChip T="string" Variant="Variant.Text" Color="Color.Primary">
+                        <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.Payments" />
+                        Bruto uurloon
+                    </MudChip>
+                    <span>€15,00</span>
+                </div>
+                <div class="hours-general-info-item">
+                    <MudChip T="string" Variant="Variant.Text" Color="Color.Primary">
+                        <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.DateRange" />
+                        Dagen tot verloning
+                    </MudChip>
+                    <span>12</span>
+                </div>
+                <div class="hours-general-info-item">
+                    <MudChip T="string" Variant="Variant.Text" Color="Color.Primary">
+                        <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.PriceCheck" />
+                        Reeds uitbetaald
+                    </MudChip>
+                    <span>€400,00</span>
+                </div>
+            </div>
+        </Card>
+    }
+    
 </div>

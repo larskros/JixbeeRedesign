@@ -24,7 +24,7 @@
             <Card Class="payout-history-card">
                 <div class="payout-history-title">@item.Title</div>
                 <div class="payout-history-amount">
-                    <div>+ €@item.Amount</div>
+                    <div>+ €@item.Amount.ToString("N2")</div>
                 </div>
                 <div class="payout-history-type">@item.Type</div>
                 <div class="payout-history-date">

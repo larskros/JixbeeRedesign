@@ -1,0 +1,16 @@
+﻿<div class="day-wrapper">
+    <span class="day-text">@TextLabel</span>
+    <div class="progress-bar">
+        <div class="progress-fill" style="width: @(GetWidth())"></div>
+    </div>
+    <span class="day-earning @(Amount > 0 ? "" : "greyed-out")">€@Amount</span>
+</div>
+
+@code {
+    [Parameter] public string TextLabel { get; set; } = "";
+    [Parameter] public double Amount { get; set; }
+    [Parameter] public double MaxAmount { get; set; }
+
+    private string GetWidth() =>
+        MaxAmount > 0 ? $"{(Amount / MaxAmount) * 100:F0}%" : "0%";
+}

@@ -1,5 +1,6 @@
 ﻿@page "/uitbetaling-succesvol"
 @inject NavigationManager NavigationManager
+@inject WithdrawStateService WithdrawState
 
 <div class="app-content payout-success-page">
     
@@ -11,7 +12,7 @@
             <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.Euro" />
             <div class="withdrawal-overview-info-details">
                 <span class="header">Bedrag</span>
-                <span>€750,00</span>
+                <span>€@WithdrawState.WithdrawAmount.ToString("N2")</span>
             </div>
         </div>
         <div class="withdrawal-overview-info-item">

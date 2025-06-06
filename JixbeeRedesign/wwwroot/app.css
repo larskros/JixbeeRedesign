@@ -236,6 +236,7 @@ h3 {
     border-radius: 24px;
     height: 35px;
     font-weight: 500;
+    background-color: var(--white);
 }
 .search-bar .mud-input-slot.mud-input-root.mud-input-root-filled {
     padding: 12px 12px 12px 8px !important;

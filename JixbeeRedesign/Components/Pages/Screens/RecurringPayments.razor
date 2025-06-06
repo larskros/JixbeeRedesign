@@ -28,19 +28,19 @@
                 </MudChip>
             }
             <div class="recurring-payment-amount">
-                €@item.Amount
+                €@item.Amount.ToString("N2")
             </div>
         </Card>
     }
     <MudIconButton Class="primary-icon-button floating-action-button" OnClick="HandleNewRecurringPayment" Icon="@Icons.Material.Outlined.PostAdd" Size="Size.Large" />
     <Popup isShown="showPopup" 
-    PopupHeight="@popupHeight" 
-    Visible="@visible" 
-    PopupTitle="Nieuwe opname"
-    PopupBgColor="@popupBgColor" 
-    PopupButtonText="@popupButtonText" 
-    ClosePopup="ClosePopup"
-    >
+           PopupHeight="@popupHeight" 
+           ButtonDisabled="@isDisabled"
+           Visible="@visible" 
+           PopupTitle="Nieuwe opname"
+           PopupBgColor="@popupBgColor" 
+           PopupButtonText="@popupButtonText" 
+           ClosePopup="ClosePopup">
         <div class="popup-content">
             <div class="input-container">
                 <MudInputLabel>Naam</MudInputLabel>

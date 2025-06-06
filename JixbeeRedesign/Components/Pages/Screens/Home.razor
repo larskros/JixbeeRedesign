@@ -1,9 +1,11 @@
 ﻿@page "/"
+@using System.Globalization
 @inject NavigationManager NavigationManager
 
 <Topbar />
 <div class="app-content app-content-topbar">
     <MudTabs Rounded="true"
+             ActivePanelIndexChanged="OnActiveIndexChanged"
              TabPanelClass="tab-filter"
              ActiveTabClass="active-tab"
              HideSlider="true">
@@ -28,7 +30,7 @@
 		<div class="progress-bar">
 			<div class="progress-fill"></div>
         </div>
-        <span class="total-withdraw">Reeds totaal netto opgenomen: €0,-</span>
+        <span class="total-withdraw">Reeds totaal netto opgenomen: €@alreadyWithdrawn.ToString("N2")</span>
         <MudButton Class="primary-button" OnClick="HandleWithdraw">Opnemen</MudButton>
     </Card>
     <Card Class="menu-card">
@@ -54,29 +56,34 @@
         </div>
     </Card>
 </div>
+
 <Popup isShown="showPopup" 
        PopupHeight="@popupHeight" 
        WithdrawAmount="@WithdrawAmount" 
        Visible="@visible" 
-       PopupTitle="Vakantiegeld"
+       ButtonDisabled="@isDisabled"
+       PopupTitle="@popupTitle"
        PopupBgColor="@popupBgColor" 
        popupButtonText="@popupButtonText" 
+       HandleSubmit="() => WithdrawMoney(WithdrawAmount)"
        ClosePopup="ClosePopup">
 	<div class="popup-content">
 
 		<div class="maximum-available">
 			<span class="header">Maximaal beschikbaar</span>
-			<span>€@MaximumSalary</span>
+            <span>€@MaximumSalary.ToString("N2")</span>
         </div>
 
 		<div class="divider"></div>
 
 		<div class="withdraw-input-wrapper">
-            <MudNumericField T="int" 
+            <MudNumericField T="decimal" 
                              ValueChanged="OnWithdrawInputChanged" 
                              Value="WithdrawAmount"
                              Max="MaximumSalary"
                              HideSpinButtons="true"
+                             Immediate="true"
+                             Format="N2"
                              Variant="Variant.Text" 
                              Placeholder="0,00" 
                              Underline="false" 
