@@ -1,0 +1,57 @@
+﻿.app-content {
+    width: 100vw;
+    padding: 20px;
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 100vh;
+}
+
+.payout-history-page {
+    gap: 8px !important;
+}
+
+.payout-history-card {
+    display: grid;
+    grid-template:
+        "title day"
+        "remaining amount";
+    justify-content: space-between;
+    min-height: 80px;
+    padding: 16px 20px;
+}
+
+.payout-history-title {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.payout-history-amount {
+    color: var(--alertsuccess);
+    font-size: 18px;
+    font-weight: 500;
+    justify-self: flex-end;
+}
+
+.payout-history-type {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--black50);
+}
+
+.payout-history-date {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--black50);
+    justify-self: flex-end;
+}
+
+.month-header {
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--black50);
+    text-align: center;
+    text-transform: capitalize;
+    margin: 16px 0 4px 0;
+}

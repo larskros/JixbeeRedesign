@@ -53,3 +53,18 @@
     bottom: 32px;
     right: 32px;
 }
+
+::deep .filled-in-title .mud-input-control-input-container .mud-input.mud-input-filled {
+    /*color: var(--primarycolor100);*/
+}
+
+.input-field-row {
+    display: flex;
+    gap: 40px;
+}
+
+    .input-field-row ::deep .mud-input-control .mud-input-control-input-container .mud-input input::-webkit-outer-spin-button,
+    .input-field-row ::deep .mud-input-control .mud-input-control-input-container .mud-input input::-webkit-inner-spin-button {
+        -webkit-appearance: none !important;
+        margin: 0;
+    }

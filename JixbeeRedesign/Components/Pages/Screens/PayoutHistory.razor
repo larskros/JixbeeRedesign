@@ -1,0 +1,36 @@
+﻿@page "/opnames/recent"
+@inject NavigationManager NavigationManager
+@using System.Globalization
+<MudPopoverProvider />
+
+<SecondaryTopbar PageTitle="Uitbetaal historie" />
+<div class="app-content payout-history-page">
+    <div class="search-bar-wrapper">
+        <MudTextField T="string" Class="search-bar" Variant="Variant.Filled" Placeholder="Zoeken" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Outlined.Search" Underline="false" />
+        <MudIconButton Class="search-bar-filter" Icon="@Icons.Material.Outlined.DateRange" />
+    </div>
+    @foreach (var group in allPayouts
+    .Where(p => p.Date.HasValue)
+    .GroupBy(p => new { p.Date.Value.Year, p.Date.Value.Month })
+    .OrderByDescending(g => g.Key.Year).ThenByDescending(g => g.Key.Month))
+    {
+        var monthName = new DateTime(group.Key.Year, group.Key.Month, 1)
+        .ToString("MMMM yyyy", new CultureInfo("nl-NL"));
+
+        <span class="month-header">@monthName</span>
+
+        @foreach (var item in group)
+        {
+            <Card Class="payout-history-card">
+                <div class="payout-history-title">@item.Title</div>
+                <div class="payout-history-amount">
+                    <div>+ €@item.Amount</div>
+                </div>
+                <div class="payout-history-type">@item.Type</div>
+                <div class="payout-history-date">
+                    @item.Date?.ToString("dd MMM", new CultureInfo("nl-NL"))
+                </div>
+            </Card>
+        }
+    }
+</div>
