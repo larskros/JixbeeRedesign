@@ -92,9 +92,60 @@ namespace JixbeeRedesign.Components.Pages.Screens
 
         private async Task OnActiveIndexChanged(int index)
         {
+            int previousIndex = activeIndex; // **ADDED: Remember previous view**
             activeIndex = index;
+
+            // **CHANGED: Only sync when switching FROM month TO week**
+            if (index == 0 && previousIndex == 1)
+            {
+                currentWeek = GetFirstWeekOfMonth(currentYear, currentMonth);
+                Console.WriteLine($"Month→Week: {CurrentMonthName} → Week {currentWeek}");
+            }
+            // **CHANGED: Only sync when switching FROM week TO month**
+            else if (index == 1 && previousIndex == 0)
+            {
+                var monthFromWeek = GetMonthFromWeek(currentWeek, currentYear);
+                Console.WriteLine($"Week→Month: Week {currentWeek} → Month {monthFromWeek}");
+                currentMonth = monthFromWeek;
+            }
+
             await ActiveIndexChanged.InvokeAsync(index);
             StateHasChanged();
+        }
+
+        private int GetFirstWeekOfMonth(int year, int month)
+        {
+            var firstDayOfMonth = new DateTime(year, month, 1);
+
+            // Find the first Monday of the month
+            var firstMonday = firstDayOfMonth;
+            while (firstMonday.DayOfWeek != DayOfWeek.Monday)
+            {
+                firstMonday = firstMonday.AddDays(1);
+            }
+
+            Console.WriteLine($"First Monday of {month}/{year}: {firstMonday:yyyy-MM-dd}");
+            return GetWeekNumber(firstMonday);
+        }
+
+        private int GetMonthFromWeek(int weekNumber, int year)
+        {
+            var firstDayOfYear = new DateTime(year, 1, 1);
+
+            var daysToAdd = (weekNumber - 1) * 7;
+
+            var culture = System.Globalization.CultureInfo.CurrentCulture;
+            var firstDayOfWeek = culture.DateTimeFormat.FirstDayOfWeek;
+
+            var firstWeekStart = firstDayOfYear;
+            while (firstWeekStart.DayOfWeek != firstDayOfWeek)
+            {
+                firstWeekStart = firstWeekStart.AddDays(-1);
+            }
+
+            var weekDate = firstWeekStart.AddDays(daysToAdd + 3);
+
+            return weekDate.Month;
         }
 
         private void GoBackTimeSelection()
@@ -126,6 +177,7 @@ namespace JixbeeRedesign.Components.Pages.Screens
                     currentYear--;
                     maxWeek = GetMaxWeekNumber(currentYear);
                 }
+                currentWeek = GetFirstWeekOfMonth(currentYear, currentMonth);
             }
             else if (activeIndex == 2)
             {
@@ -133,18 +185,12 @@ namespace JixbeeRedesign.Components.Pages.Screens
                 {
                     currentYear--;
                     maxWeek = GetMaxWeekNumber(currentYear);
+                    currentWeek = GetFirstWeekOfMonth(currentYear, currentMonth);
                 }
             }
-            var today = DateTime.Today;
-            if (currentWeek != GetWeekNumber(today) || currentMonth != today.Month || currentYear != today.Year)
-            {
-                isNotCurrentDay = true;
-            }
-            else
-            {
-                isNotCurrentDay = false;
-            }
+            UpdateCurrentDayStatus();
         }
+
         private void GoForwardTimeSelection()
         {
             if (activeIndex == 0)
@@ -152,14 +198,12 @@ namespace JixbeeRedesign.Components.Pages.Screens
                 if (currentWeek < maxWeek)
                 {
                     currentWeek++;
-                    Console.WriteLine("plus 1 week");
                 }
                 else
                 {
                     currentYear++;
                     currentWeek = 1;
                     maxWeek = GetMaxWeekNumber(currentYear);
-                    Console.WriteLine("plus 1 year");
                 }
             }
             else if (activeIndex == 1)
@@ -174,12 +218,19 @@ namespace JixbeeRedesign.Components.Pages.Screens
                     currentYear++;
                     maxWeek = GetMaxWeekNumber(currentYear);
                 }
+                currentWeek = GetFirstWeekOfMonth(currentYear, currentMonth);
             }
             else if (activeIndex == 2)
             {
                 currentYear++;
                 maxWeek = GetMaxWeekNumber(currentYear);
+                currentWeek = GetFirstWeekOfMonth(currentYear, currentMonth);
             }
+            UpdateCurrentDayStatus();
+        }
+
+        private void UpdateCurrentDayStatus()
+        {
             var today = DateTime.Today;
             if (currentWeek != GetWeekNumber(today) || currentMonth != today.Month || currentYear != today.Year)
             {

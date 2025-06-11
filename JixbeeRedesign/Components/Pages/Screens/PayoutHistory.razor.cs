@@ -29,10 +29,10 @@ namespace JixbeeRedesign.Components.Pages.Screens
 
         protected override async Task OnInitializedAsync()
         {
-            await LoadRecurringPayments();
+            await LoadPayoutHistory();
         }
 
-        private async Task LoadRecurringPayments()
+        private async Task LoadPayoutHistory()
         {
             allPayouts = new List<Payout>
             {
@@ -45,7 +45,7 @@ namespace JixbeeRedesign.Components.Pages.Screens
                 },
                 new Payout
                 {
-                    Title = "Koffie budget",
+                    Title = "Salaris",
                     Type = "Geplande opname",
                     Amount = 650,
                     Date = new DateTime(2025, 04, 23)
@@ -66,14 +66,14 @@ namespace JixbeeRedesign.Components.Pages.Screens
                 },
                 new Payout
                 {
-                    Title = "Koffie budget",
+                    Title = "Salaris",
                     Type = "Geplande opname",
                     Amount = 650,
                     Date = new DateTime(2025, 03, 23)
                 },
                 new Payout
                 {
-                    Title = "Koffie budget",
+                    Title = "Telefoon abonnement",
                     Type = "Geplande opname",
                     Amount = 40,
                     Date = new DateTime(2025, 03, 09)

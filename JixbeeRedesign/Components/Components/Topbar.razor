@@ -9,8 +9,8 @@
 		<MudImage Src="/img/jixbee-logo-zwart.png" Height="24" />
 	</div>
 	<div class="topbar-item right">
-		<MudIcon Icon="@Icons.Material.Outlined.Notifications" Size="Size.Small"></MudIcon>
-		<MudIcon Icon="@Icons.Material.Outlined.Settings" Size="Size.Small"></MudIcon>
+		<MudIconButton OnClick="OpenNotifications" Icon="@Icons.Material.Outlined.Notifications" Size="Size.Small" />
+		<MudIconButton OnClick="OpenSettings" Icon="@Icons.Material.Outlined.Settings" Size="Size.Small" />
 	</div>
 </div>
 
@@ -18,5 +18,15 @@
 	private void GoToLoginPage() 
 	{
 		NavigationManager.NavigateTo("/login");
+	}
+
+	private void OpenNotifications()
+	{
+		NavigationManager.NavigateTo("/notificaties");
+	}
+
+	private void OpenSettings()
+	{
+		NavigationManager.NavigateTo("/instellingen");
 	}
 }

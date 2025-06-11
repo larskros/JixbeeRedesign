@@ -136,11 +136,6 @@
     }
 
 /* Popup content */
-.popup-content {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
 
 .maximum-available {
     display: flex;

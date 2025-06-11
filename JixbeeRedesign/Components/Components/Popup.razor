@@ -7,13 +7,12 @@
 	</div>
 	<div class="divider"></div>
 	@ChildContent
-	<MudButton OnClick="@HandleSubmit" Disabled="@ButtonDisabled" Class="primary-button">@PopupButtonText</MudButton>
+	@* <MudButton OnClick="@HandleSubmit" Disabled="@ButtonDisabled" Class="primary-button">@PopupButtonText</MudButton> *@
 </div>
 
 @code {
 	[Parameter] public RenderFragment? ChildContent { get; set; }
 	[Parameter] public bool isShown { get; set; }
-	[Parameter] public bool ButtonDisabled { get; set; }
 	[Parameter] public int PopupHeight { get; set; } = 0;
 	[Parameter] public string? PopupTitle { get; set; }
 	[Parameter] public string PopupBgColor { get; set; } = "rgba(31, 31, 31, 0)";
@@ -22,7 +21,7 @@
 	[Parameter] public EventCallback HandleSubmit { get; set; }
 	[Parameter] public EventCallback ClosePopup { get; set; }
 	[Parameter] public EventCallback OnClose { get; set; }
-	[Parameter] public int? WithdrawAmount { get; set; }
+	[Parameter] public decimal? WithdrawAmount { get; set; }
 
 	protected override void OnInitialized()
 	{

@@ -12,14 +12,36 @@
     position: relative;
 }
 
-.recurring-payment-card {
-    display: grid;
-    grid-template:
-        "title day"
-        "remaining amount";
-    justify-content: space-between;
-    min-height: 120px;
-}
+    .recurring-payments-page ::deep .mud-swipearea {
+        display: grid;
+        grid-template-columns: 100% 1fr;
+        transition: .5s;
+    }
+        .recurring-payments-page ::deep .mud-swipearea:has(.swiped-left) {
+            transform: translateX(-80px);
+            transition: .5s;
+        }
+
+            .recurring-payment-card {
+                display: grid;
+                grid-template:
+                    "title day"
+                    "remaining amount";
+                justify-content: space-between;
+                min-height: 120px;
+                user-select: none;
+            }
+    .recurring-payment-card.swiped-left {
+        transform: translateX(-20px);
+        transition: .5s;
+    }
+        .recurring-payment-card.swiped-left ::deep .swipe-button-delete {
+            transition: .5s;
+        }
+    .recurring-payment-card.swiped-right {
+        transform: translateX(0);
+        transition: .5s;
+    }
 
 .recurring-payment-title {
     font-size: 16px;

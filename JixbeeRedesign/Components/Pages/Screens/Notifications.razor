@@ -1,0 +1,25 @@
+﻿@page "/notificaties"
+@inject NavigationManager NavigationManager
+@using System.Globalization
+<MudPopoverProvider />
+
+<SecondaryTopbar PageTitle="Notificaties" />
+<div class="app-content notifications-page">
+    @foreach (var item in allNotifications) {
+        <div class="notification-item">
+            <div class="notification-item-left">
+                @if (item.Unread) {
+                    <div class="unread-mark" />
+                    @item.Title
+                } else {
+                    @item.Title
+                }
+            </div>
+            <div class="notification-item-right">
+                @item.Date?.ToString("dd MMM")[0..6]
+                <MudIcon Icon="@Icons.Material.Outlined.ChevronRight" Size="Size.Small" />
+            </div>
+        </div>
+        <div class="divider dark" />
+    }
+</div>

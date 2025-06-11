@@ -12,7 +12,9 @@
             <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.Euro" />
             <div class="withdrawal-overview-info-details">
                 <span class="header">Bedrag</span>
-                <span>€@WithdrawState.WithdrawAmount.ToString("N2")</span>
+                <span>
+                    €@WithdrawState.WithdrawAmount.Value.ToString("N2")
+                </span>
             </div>
         </div>
         <div class="withdrawal-overview-info-item">

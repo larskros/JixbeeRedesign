@@ -2,6 +2,6 @@
 {
     public class WithdrawStateService
     {
-        public int WithdrawAmount { get; set; }
+        public decimal? WithdrawAmount { get; set; }
     }
 }

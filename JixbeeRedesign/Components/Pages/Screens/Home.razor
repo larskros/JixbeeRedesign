@@ -60,55 +60,57 @@
 <Popup isShown="showPopup" 
        PopupHeight="@popupHeight" 
        WithdrawAmount="@WithdrawAmount" 
-       Visible="@visible" 
-       ButtonDisabled="@isDisabled"
+       Visible="@visible"
        PopupTitle="@popupTitle"
        PopupBgColor="@popupBgColor" 
        popupButtonText="@popupButtonText" 
-       HandleSubmit="() => WithdrawMoney(WithdrawAmount)"
        ClosePopup="ClosePopup">
 	<div class="popup-content">
-
-		<div class="maximum-available">
-			<span class="header">Maximaal beschikbaar</span>
-            <span>€@MaximumSalary.ToString("N2")</span>
-        </div>
-
-		<div class="divider"></div>
-
-		<div class="withdraw-input-wrapper">
-            <MudNumericField T="decimal" 
-                             ValueChanged="OnWithdrawInputChanged" 
-                             Value="WithdrawAmount"
-                             Max="MaximumSalary"
-                             HideSpinButtons="true"
-                             Immediate="true"
-                             Format="N2"
-                             Variant="Variant.Text" 
-                             Placeholder="0,00" 
-                             Underline="false" 
-                             Adornment="Adornment.Start" 
-                             AdornmentIcon="@Icons.Material.Filled.Euro" />
-            <MudButton Class="primary-button" OnClick="SetMaximumAvailableSalary">Max</MudButton>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="withdrawal-overview-info-item">
-            <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.CreditCard" />
-            <div class="withdrawal-overview-info-details">
-                <span class="header">IBAN</span>
-                <span>NL00 INGB 0000 0000 0000</span>
+        <EditForm   @ref="editForm" 
+                        Model="model"
+                  OnValidSubmit="() => WithdrawMoney(WithdrawAmount)">
+                <DataAnnotationsValidator />
+		    <div class="maximum-available">
+			    <span class="header">Maximaal beschikbaar</span>
+                <span>€@MaximumSalary.ToString("N2")</span>
             </div>
-        </div>
+
+		    <div class="divider"></div>
+
+		    <div class="withdraw-input-wrapper">
+                <MudNumericField T="decimal?" 
+                                 @bind-Value="WithdrawAmount"
+                                 TextChanged="() => CheckFields()"
+                                 Max="MaximumSalary"
+                                 HideSpinButtons="true"
+                                 Immediate="true"
+                                 Format="N2"
+                                 Variant="Variant.Text" 
+                                 Placeholder="0,00" 
+                                 Underline="false" 
+                                 Adornment="Adornment.Start" 
+                                 AdornmentIcon="@Icons.Material.Filled.Euro" />
+                <MudButton Class="primary-button" OnClick="SetMaximumAvailableSalary">Max</MudButton>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="withdrawal-overview-info-item">
+                <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.CreditCard" />
+                <div class="withdrawal-overview-info-details">
+                    <span class="header">IBAN</span>
+                    <span>NL00 INGB 0000 0000 0000</span>
+                </div>
+            </div>
         
-        <div class="withdrawal-overview-info-item">
-            <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.AccountCircle" />
-            <div class="withdrawal-overview-info-details">
-                <span class="header">Naam</span>
-                <span>John de Vries</span>
+            <div class="withdrawal-overview-info-item">
+                <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.AccountCircle" />
+                <div class="withdrawal-overview-info-details">
+                    <span class="header">Naam</span>
+                    <span>John de Vries</span>
+                </div>
             </div>
-        </div>
-
+            <MudButton ButtonType="ButtonType.Submit" Disabled="@isDisabled" Class="primary-button">Opnemen</MudButton>
+        </EditForm>
     </div>
 </Popup>

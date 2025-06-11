@@ -14,6 +14,8 @@
     --textinput: #F4F5F6;
     --background: #F0F0F0;
     --alertsuccess: #63C132;
+    --alerterror: #F23A4A;
+    --alerterrordark: #DD2E3E;
     /* MudBlazor */
     --mud-palette-primary: #42A5F5 !important;
     --mud-palette-primary-hover: #EDF6FE !important;
@@ -52,6 +54,9 @@ h3 {
     height: 1px;
     border-radius: 1px;
 }
+.divider.dark {
+    background-color: var(--black20);
+}
 .vertical-divider {
     background-color: var(--black10);
     width: 1px;
@@ -85,6 +90,19 @@ h3 {
     fill: var(--black100);
     font-size: 24px;
 }
+
+.swipe-delete-button {
+    width: 80px;
+    border-radius: 20px;
+    background-color: var(--white);
+    color: var(--alerterror);
+    transition: .3s;
+}
+    .swipe-delete-button:hover {
+        background-color: rgba(255, 255, 255, .5);
+        color: var(--alerterrordark);
+        transition: .3s;
+    }
 
 /* Icons Buttons */
 
@@ -251,4 +269,12 @@ h3 {
 }
 .search-bar-filter span svg {
     fill: var(--black100) !important;
+}
+
+
+/* Popup content */
+.popup-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }

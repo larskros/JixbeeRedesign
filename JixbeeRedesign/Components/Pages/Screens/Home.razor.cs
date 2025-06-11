@@ -1,6 +1,8 @@
 ﻿using JixbeeRedesign.Services;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
 using System.Globalization;
+using static JixbeeRedesign.Components.Pages.Screens.RecurringPayments;
 
 namespace JixbeeRedesign.Components.Pages.Screens
 {
@@ -10,7 +12,7 @@ namespace JixbeeRedesign.Components.Pages.Screens
         [Parameter] public string? Class { get; set; }
         [Parameter] public EventCallback<int> ActiveIndexChanged { get; set; }
         [Parameter] public int InitialIndex { get; set; }
-        [Parameter] public EventCallback<int> WithdrawAmountChanged { get; set; }
+        [Parameter] public EventCallback<decimal?> WithdrawAmountChanged { get; set; }
         [Parameter] public int WithdrawMoneyAmount { get; set; }
 
         private List<string> SegmentItems = new()
@@ -28,9 +30,12 @@ namespace JixbeeRedesign.Components.Pages.Screens
         private string visible { get; set; } = "hidden";
         private string popupButtonText { get; set; } = "Opnemen";
         private int MaximumSalary { get; set; } = 1250;
-        private int WithdrawAmount { get; set; }
+        private decimal? WithdrawAmount { get; set; }
         private bool isDisabled { get; set; }
 
+
+        private EditForm editForm;
+        private Withdraw? model = new Withdraw();
 
         protected override void OnInitialized()
         {
@@ -52,6 +57,11 @@ namespace JixbeeRedesign.Components.Pages.Screens
                     popupTitle = "Salaris";
                     break;
             }
+        }
+
+        private class Withdraw
+        {
+            public int WithdrawAmount { get; set; }
         }
 
         private async Task OnActiveIndexChanged(int index)
@@ -93,7 +103,7 @@ namespace JixbeeRedesign.Components.Pages.Screens
             WithdrawAmount = MaximumSalary;
         }
 
-        private void WithdrawMoney(int value)
+        private void WithdrawMoney(decimal? value)
         {
             WithdrawState.WithdrawAmount = value;
             NavigationManager.NavigateTo("/uitbetaling-succesvol");
@@ -109,9 +119,9 @@ namespace JixbeeRedesign.Components.Pages.Screens
             StateHasChanged();
 		}
 
-        private async Task OnWithdrawInputChanged(decimal value)
+        private async Task OnWithdrawInputChanged(decimal? value)
         {
-            WithdrawAmount = (int)value;
+            WithdrawAmount = value;
             if (WithdrawAmount > 0)
             {
                 isDisabled = false;
@@ -120,8 +130,25 @@ namespace JixbeeRedesign.Components.Pages.Screens
             {
                 isDisabled = true;
             }
-            await WithdrawAmountChanged.InvokeAsync((int)value);
+            await WithdrawAmountChanged.InvokeAsync(value);
             StateHasChanged();
+
+        }
+        private void CheckFields()
+        {
+            if (WithdrawAmount == 0 || WithdrawAmount == null)
+            {
+                WithdrawAmount = null;
+                isDisabled = true;
+            }
+            else
+            {
+                isDisabled = false;
+            }
+        }
+
+        private void HandleOnValidSubmit()
+        {
 
         }
     }

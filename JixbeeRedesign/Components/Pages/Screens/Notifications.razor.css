@@ -1,0 +1,53 @@
+﻿.app-content {
+    width: 100vw;
+    padding: 20px;
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 100vh;
+}
+
+.payout-history-page {
+    gap: 8px !important;
+}
+
+.notification-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.notification-item-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 400;
+    width: calc(80% - 8px);
+    font-size: 14px;
+}
+.notification-item-left .unread-mark {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--primarycolor100);
+}
+    .notification-item-left:has(.unread-mark) {
+        font-weight: 600;
+    }
+
+.notification-item-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    text-align: right;
+    color: var(--black50);
+    font-weight: 600;
+    font-size: 12px;
+    width: 20%;
+}
+.notification-item-right ::deep svg {
+    width: 20px !important;
+}

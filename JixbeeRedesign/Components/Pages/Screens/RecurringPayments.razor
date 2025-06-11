@@ -6,82 +6,100 @@
 <div class="app-content recurring-payments-page">
     @foreach (var item in allRecurringPayments)
     {
-        <Card Class="recurring-payment-card">
-            <div class="recurring-payment-title">
-                @item.Title
-            </div>
-            <div class="recurring-payment-day">
-                <div>@item.DayOfTheMonth<span>e</span></div>
-                <span class="sub-text">maandelijks</span>
-            </div>
-            @if (item.RemainingPayments == 1)
-            {
-                <MudChip T="string" Variant="Variant.Text" Color="Color.Warning" Class="recurring-payment-remaining">
-                    <MudIcon Class="secondary-icon" Icon="@Icons.Material.Outlined.Replay" />
-                    @item.RemainingPayments resterend termijn
-                </MudChip>
-            } else
-            {
-                <MudChip T="string" Variant="Variant.Text" Color="Color.Primary" Class="recurring-payment-remaining">
-                    <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.Replay" />
-                    @item.RemainingPayments resterende termijnen
-                </MudChip>
+        <MudSwipeArea OnSwipeEnd="@(e => HandleSwipe(e.SwipeDirection, item))">
+            <Card Class="@GetCardClass(item)">
+                <div class="recurring-payment-title">
+                    @item.Title
+                </div>
+                <div class="recurring-payment-day">
+                    <div>@item.DayOfTheMonth<span>e</span></div>
+                    <span class="sub-text">maandelijks</span>
+                </div>
+                @if (item.RemainingPayments == 1)
+                {
+                    <MudChip T="string" Variant="Variant.Text" Color="Color.Warning" Class="recurring-payment-remaining">
+                        <MudIcon Class="secondary-icon" Icon="@Icons.Material.Outlined.Replay" />
+                        @item.RemainingPayments resterend termijn
+                    </MudChip>
+                } else
+                {
+                    <MudChip T="string" Variant="Variant.Text" Color="Color.Primary" Class="recurring-payment-remaining">
+                        <MudIcon Class="primary-icon" Icon="@Icons.Material.Outlined.Replay" />
+                        @item.RemainingPayments resterende termijnen
+                    </MudChip>
+                }
+                <div class="recurring-payment-amount">
+                    €@item.Amount.ToString("N2")
+                </div>
+            </Card>
+            @if (item.SwipedDirection == SwipeDirection.RightToLeft) {
+                <MudIconButton OnClick="RemoveRecurringPayment" Class="swipe-delete-button" Icon="@Icons.Material.Outlined.Close" />
             }
-            <div class="recurring-payment-amount">
-                €@item.Amount.ToString("N2")
-            </div>
-        </Card>
+        </MudSwipeArea>
     }
     <MudIconButton Class="primary-icon-button floating-action-button" OnClick="HandleNewRecurringPayment" Icon="@Icons.Material.Outlined.PostAdd" Size="Size.Large" />
     <Popup isShown="showPopup" 
-           PopupHeight="@popupHeight" 
-           ButtonDisabled="@isDisabled"
+           PopupHeight="@popupHeight"
            Visible="@visible" 
            PopupTitle="Nieuwe opname"
            PopupBgColor="@popupBgColor" 
            PopupButtonText="@popupButtonText" 
            ClosePopup="ClosePopup">
         <div class="popup-content">
-            <div class="input-container">
-                <MudInputLabel>Naam</MudInputLabel>
-                <MudTextField T="string" @bind-Value="@recurringPaymentTitle" Class="general-input" TextChanged="() => HandleTitleInput(recurringPaymentTitle)" Placeholder="Naam" Underline="false" Variant="Variant.Filled" />
-            </div>
-            <div class="input-container-wrapper">
+            <EditForm   @ref="editForm" 
+                        Model="model" 
+                        OnValidSubmit="HandleOnValidSubmit">
+                <DataAnnotationsValidator />
                 <div class="input-container">
-                    <MudInputLabel>Bedrag</MudInputLabel>
-                    <MudNumericField T="string"
-                    @bind-Value="@recurringPaymentAmount"
-                    Class="general-input"
-                    HideSpinButtons="true"
-                    Variant="Variant.Text"
-                    Placeholder="0,00"
-                    Underline="false"
-                    Adornment="Adornment.Start"
-                    AdornmentIcon="@Icons.Material.Filled.Euro" />
+                    <MudInputLabel>Naam</MudInputLabel>
+                    <MudTextField T="string" 
+                        @bind-Value="@recurringPaymentTitle" 
+                        Class="general-input" 
+                        TextChanged="() => HandleTitleInput(recurringPaymentTitle)" 
+                        Placeholder="Naam" 
+                        Underline="false" 
+                        Variant="Variant.Filled" />
+                </div>
+                <div class="input-container-wrapper">
+                    <div class="input-container">
+                        <MudInputLabel>Bedrag</MudInputLabel>
+                        <MudNumericField T="decimal?"
+                        Required
+                        @bind-Value="@recurringPaymentAmount"
+                        Class="general-input"
+                        TextChanged="() => CheckFields()"
+                        HideSpinButtons="true"
+                        Variant="Variant.Text"
+                        Placeholder="0,00"
+                        Format="N2"
+                        Underline="false"
+                        Adornment="Adornment.Start"
+                        AdornmentIcon="@Icons.Material.Filled.Euro" />
+                    </div>
+                    <div class="input-container">
+                        <MudInputLabel>Dag</MudInputLabel>
+                        <select class="number-select" @bind="@recurringPaymentDay">
+                            @foreach(var day in days)
+                            {
+                                <option value="@day">
+                                    @day
+                                </option>
+                            }
+                        </select>
+                    </div>
                 </div>
                 <div class="input-container">
-                    <MudInputLabel>Dag</MudInputLabel>
-                    <select class="number-select">
-                        @foreach(var day in days)
-                        {
-                            <option>
-                                @day
-                            </option>
-                        }
-                    </select>
+                    <MudInputLabel>Einddatum</MudInputLabel>
+                    <div class="input-field-row">
+					    <MudSwitch T="bool" @bind-Value="hasEndDate" />
+                        @if (hasEndDate)
+					    {
+                            <MudTextField T="string" Placeholder="dd-mm-jaar" Underline="false" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Outlined.CalendarMonth" Mask="@(new DateMask("dd-mm-jjjj", 'j', 'm', 'd'))" />
+					    }
+				    </div>
                 </div>
-            </div>
-            <div class="input-container">
-                <MudInputLabel>Einddatum</MudInputLabel>
-                <div class="input-field-row">
-					<MudSwitch T="bool" @bind-Value="hasEndDate" />
-                    @if (hasEndDate)
-					{
-                        <MudTextField T="string" Placeholder="dd-mm-jaar" Underline="false" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Outlined.CalendarMonth" Mask="@(new DateMask("dd-mm-jjjj", 'j', 'm', 'd'))" />
-					}
-				</div>
-            </div>
-                
+                <MudButton ButtonType="ButtonType.Submit" Disabled="@isDisabled" Class="primary-button">Inplannen</MudButton>
+            </EditForm>
                     
         </div>
     </Popup>
