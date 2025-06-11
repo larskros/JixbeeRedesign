@@ -180,3 +180,47 @@
     font-size: 12px;
     font-weight: 500;
 }
+
+.monthly-overview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 8px;
+}
+
+.month-overview-item {
+    display: flex;
+    align-items: center;
+}
+.month-overview-item-text {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    padding: 8px;
+}
+.month-overview-item-line {
+    height: 40px;
+    width: 4px;
+    border-radius: 2px;
+    background-color: var(--secondarycolor100);
+}
+.month-overview-item:nth-of-type(5n) .month-overview-item-line {
+    background-color: var(--black20);
+}
+    .month-overview-item:nth-of-type(5n) .month-overview-item-text {
+        color: var(--black20);
+    }
+    .month-overview-item:nth-of-type(5n) .month-overview-item-text span {
+        display: none;
+    }
+    .month-overview-item:nth-of-type(5n) .month-overview-item-text .month-overview-day {
+        display: block;
+    }
+    .month-overview-item:nth-of-type(5n) .month-overview-item-text::after {
+        content: "-";
+    }
+
+.month-overview-day {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--black50);
+}

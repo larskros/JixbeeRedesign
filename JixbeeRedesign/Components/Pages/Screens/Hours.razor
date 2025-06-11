@@ -95,22 +95,30 @@
         <Card Class="hours-card">
             <div class="available-salary">
                 <div class="available-salary-item">
-                    <span class="salary-amount">30</span>
+                    <span class="salary-amount">180</span>
                     Gewerkte uren
                 </div>
                 <div class="vertical-divider"></div>
                 <div class="available-salary-item">
-                    <span class="salary-amount">€@weeklyTotal.ToString("N2")</span>
+                    <span class="salary-amount">€@monthlyTotal.ToString("N2")</span>
                     Verdiend deze periode
                 </div>
             </div>
         </Card>
         <Card Class="week-overview-card">
             <h1>Maandoverzicht</h1>
-            <div class="weekly-overview">
-                @foreach (var day in WeekDays)
+            <div class="monthly-overview">
+                @foreach (var day in DaysOfTheMonth)
                 {
-                    <ProgressBar TextLabel="@day.Label" Amount="@day.Amount" MaxAmount="@highestWeekEarning" />
+                    @* <ProgressBar ShowBar="false" TextLabel="@day.Day.ToString("00")" MonthLabel="@CurrentMonthName.ToString()[0..3]" Amount="new Random().Next(100, 340)" /> *@
+
+                    <div class="month-overview-item">
+                        <div class="month-overview-item-line" />
+                        <div class="month-overview-item-text">
+                            <span class="month-overview-day">@day.Day.ToString("00") @CurrentMonthName.ToString()[0..3]</span>
+                            <span>€@(new Random().Next(0, 200).ToString("N2"))</span>
+                        </div>
+                    </div>
                 }
             </div>
             <div class="divider"></div>

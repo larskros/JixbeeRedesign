@@ -1,13 +1,18 @@
 ﻿<div class="day-wrapper">
-    <span class="day-text">@TextLabel</span>
-    <div class="progress-bar">
-        <div class="progress-fill" style="width: @(GetWidth())"></div>
-    </div>
+    <span class="day-text">@TextLabel @MonthLabel</span>
+    @if (ShowBar)
+    {
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: @(GetWidth())"></div>
+        </div>
+    }
     <span class="day-earning @(Amount > 0 ? "" : "greyed-out")">€@Amount</span>
 </div>
 
 @code {
     [Parameter] public string TextLabel { get; set; } = "";
+    [Parameter] public string MonthLabel { get; set; } = "";
+    [Parameter] public bool ShowBar { get; set; } = true;
     [Parameter] public double Amount { get; set; }
     [Parameter] public double MaxAmount { get; set; }
 

@@ -28,6 +28,8 @@ namespace JixbeeRedesign.Components.Pages.Screens
         private double weeklyTotal { get; set; }
         private double highestWeekEarning { get; set; }
 
+        private double monthlyTotal { get; set; } = 2700;
+
         public List<(int Day, double Amount)> CreateMonthOverview(int daysInMonth)
         {
             var monthOverview = new List<(int Day, double Amount)>();
@@ -66,6 +68,7 @@ namespace JixbeeRedesign.Components.Pages.Screens
         private int year { get; set; }
         private int maxWeek { get; set; }
         private string CurrentMonthName => new DateTime(currentYear, currentMonth, 1).ToString("MMM", new CultureInfo("nl-NL"));
+        private List<DateTime> DaysOfTheMonth = new();
         private bool isNotCurrentDay { get; set; }
 
         private int activeIndex = 0;
@@ -84,6 +87,7 @@ namespace JixbeeRedesign.Components.Pages.Screens
             yearlyTotal = Months.Sum(x => x.Amount);
             //highestMonthEarning = FindMax(amountJanuary, amountFebruary, amountMarch, amountApril, amountMay, amountJune, amountJuly, amountAugust, amountSeptember, amountOctober, amountNovember, amountDecember);
             //monthlyTotal = Math
+            GetDaysFromMonth(new DateTime(currentYear, currentMonth, 1));
         }
         decimal FindMax(params decimal[] values)
         {
@@ -92,16 +96,14 @@ namespace JixbeeRedesign.Components.Pages.Screens
 
         private async Task OnActiveIndexChanged(int index)
         {
-            int previousIndex = activeIndex; // **ADDED: Remember previous view**
+            int previousIndex = activeIndex;
             activeIndex = index;
 
-            // **CHANGED: Only sync when switching FROM month TO week**
             if (index == 0 && previousIndex == 1)
             {
                 currentWeek = GetFirstWeekOfMonth(currentYear, currentMonth);
                 Console.WriteLine($"Month→Week: {CurrentMonthName} → Week {currentWeek}");
             }
-            // **CHANGED: Only sync when switching FROM week TO month**
             else if (index == 1 && previousIndex == 0)
             {
                 var monthFromWeek = GetMonthFromWeek(currentWeek, currentYear);
@@ -148,6 +150,18 @@ namespace JixbeeRedesign.Components.Pages.Screens
             return weekDate.Month;
         }
 
+        private void GetDaysFromMonth(DateTime month)
+        {
+            DaysOfTheMonth.Clear();
+            var firstDay = new DateTime(month.Year, month.Month, 1);
+            int daysInMonth = DateTime.DaysInMonth(month.Year, month.Month);
+
+            for (int i = 0; i <= daysInMonth; i++)
+            {
+                DaysOfTheMonth.Add(firstDay.AddDays(i));
+            }
+        }
+
         private void GoBackTimeSelection()
         {
             if (activeIndex == 0)
@@ -178,6 +192,7 @@ namespace JixbeeRedesign.Components.Pages.Screens
                     maxWeek = GetMaxWeekNumber(currentYear);
                 }
                 currentWeek = GetFirstWeekOfMonth(currentYear, currentMonth);
+                GetDaysFromMonth(new DateTime(currentYear, currentMonth, 1));
             }
             else if (activeIndex == 2)
             {
@@ -219,6 +234,7 @@ namespace JixbeeRedesign.Components.Pages.Screens
                     maxWeek = GetMaxWeekNumber(currentYear);
                 }
                 currentWeek = GetFirstWeekOfMonth(currentYear, currentMonth);
+                GetDaysFromMonth(new DateTime(currentYear, currentMonth, 1));
             }
             else if (activeIndex == 2)
             {
