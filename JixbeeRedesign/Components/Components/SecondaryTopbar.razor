@@ -2,7 +2,7 @@
 
 <div class="secondary-topbar-container">
 	<div class="secondary-topbar-item left">
-		<MudIconButton Icon="@Icons.Material.Outlined.West" Size="Size.Small" OnClick="@(() => NavigationManager.NavigateTo("/"))"></MudIconButton>
+		<MudIconButton Icon="@Icons.Material.Outlined.West" Size="Size.Small" OnClick="@GoBack"></MudIconButton>
 	</div>
 	<div class="secondary-topbar-item middle">
 		<span>@PageTitle</span>
@@ -13,4 +13,5 @@
 
 @code {
 	[Parameter] public string PageTitle { get; set; }
+	[Parameter] public EventCallback GoBack { get; set; }
 }

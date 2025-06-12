@@ -3,7 +3,7 @@
 @using System.Globalization
 <MudPopoverProvider />
 
-<SecondaryTopbar PageTitle="Uitbetaal historie" />
+<SecondaryTopbar PageTitle="Uitbetaal historie" GoBack="@(() => NavigationManager.NavigateTo("/"))" />
 <div class="app-content payout-history-page">
     <div class="search-bar-wrapper">
         <MudTextField T="string" Class="search-bar" Variant="Variant.Filled" Placeholder="Zoeken" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Outlined.Search" Underline="false" />

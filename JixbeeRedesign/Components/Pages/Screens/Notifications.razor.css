@@ -8,8 +8,8 @@
     min-height: 100vh;
 }
 
-.payout-history-page {
-    gap: 8px !important;
+.notifications-page {
+    gap: 0px !important;
 }
 
 .notification-item {
@@ -17,6 +17,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 8px;
+    padding: 20px 0;
 }
 
 .notification-item-left {

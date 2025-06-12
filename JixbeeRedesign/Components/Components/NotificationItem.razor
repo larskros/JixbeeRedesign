@@ -1,0 +1,37 @@
+﻿@page "/notificaties/{NotificationId:int}"
+@inject NavigationManager NavigationManager
+@inject NotificationService NotificationService
+@using System.Globalization
+<MudPopoverProvider />
+
+<SecondaryTopbar PageTitle="Bericht" GoBack="@(() => NavigationManager.NavigateTo("/notificaties"))" />
+<div class="app-content notification-item-page">
+    @if (notification == null)
+    {
+        <p>Notificatie niet gevonden.</p>
+    }
+    else
+    {
+        <div class="notification-info">
+            <span class="title">Jixbee</span>
+            <span class="date">@notification.Date?.ToString("dd MMM yyyy")</span>
+        </div>
+        <Card Class="notification-card">
+            <span>@notification.Title</span>
+            <div class="notification-message">
+                @notification.Message
+                @if (notification.Author == "Jixbee") {
+                    <span>
+                        Met vriendelijke groet,<br />
+                        Jixbee Team
+                    </span>
+                }                
+            </div>
+        </Card>
+        <div class="divider" />
+        <div class="notification-info">
+            <span class="title">Opties</span>
+        </div>
+        <MudButton Class="secondary-button" StartIcon="@Icons.Material.Outlined.Delete">Bericht verwijderen</MudButton>
+    }
+</div>

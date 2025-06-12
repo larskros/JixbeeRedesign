@@ -1,7 +1,7 @@
 ﻿@page "/uren"
 @inject NavigationManager NavigationManager
 
-<SecondaryTopbar PageTitle="Gewerkte uren" />
+<SecondaryTopbar PageTitle="Gewerkte uren" GoBack="@(() => NavigationManager.NavigateTo("/"))" />
 <div class="app-content hours-page">
     <MudTabs Rounded="true"
              ActivePanelIndexChanged="OnActiveIndexChanged"

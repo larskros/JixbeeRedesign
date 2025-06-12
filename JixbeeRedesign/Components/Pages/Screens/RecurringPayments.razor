@@ -2,7 +2,7 @@
 @inject NavigationManager NavigationManager
 <MudPopoverProvider />
 
-<SecondaryTopbar PageTitle="Ingeplande opnames" />
+<SecondaryTopbar PageTitle="Ingeplande opnames" GoBack="@(() => NavigationManager.NavigateTo("/"))" />
 <div class="app-content recurring-payments-page">
     @foreach (var item in allRecurringPayments)
     {

@@ -12,4 +12,16 @@
 	  <None Update="Components/**/*.razor.css" CssScope="custom-scope-identifier" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Components\Components\NotificationItem.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Components\Components\NotificationItem.razor.css">
+      <CssScope>custom-scope-identifier</CssScope>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -91,6 +91,31 @@ h3 {
     font-size: 24px;
 }
 
+.secondary-button {
+    background-color: var(--white);
+    height: 48px;
+    border-radius: 24px;
+    color: var(--black100);
+    text-transform: capitalize;
+    font-size: 15px;
+}
+    .secondary-button span {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .secondary-button:hover, .secondary-button:active {
+        background-color: rgba(255, 255, 255, .5);
+    }
+
+    .secondary-button span span {
+        margin-right: 0 !important;
+    }
+    .secondary-button span svg {
+        color: var(--alerterrordark);
+        font-size: 32px;
+    }
+
 .swipe-delete-button {
     width: 80px;
     border-radius: 20px;
@@ -118,6 +143,23 @@ h3 {
         opacity: .7;
     }
     .primary-icon-button span svg {
+        font-size: 32px;
+    }
+
+.secondary-icon-button {
+    background-color: var(--white);
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    color: var(--alerterror);
+}
+
+    .secondary-icon-button:hover, .secondary-icon-button:active {
+        background-color: rgba(255, 255, 255, .5);
+        color: var(--alerterrordark);
+    }
+
+    .secondary-icon-button span svg {
         font-size: 32px;
     }
 

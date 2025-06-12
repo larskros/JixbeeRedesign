@@ -1,12 +1,13 @@
 ﻿@page "/notificaties"
 @inject NavigationManager NavigationManager
+@inject NotificationService NotificationService
 @using System.Globalization
 <MudPopoverProvider />
 
-<SecondaryTopbar PageTitle="Notificaties" />
+<SecondaryTopbar PageTitle="Notificaties" GoBack="@(() => NavigationManager.NavigateTo("/"))" />
 <div class="app-content notifications-page">
     @foreach (var item in allNotifications) {
-        <div class="notification-item">
+        <div class="notification-item" @onclick="() => OpenNotification(item.Id)">
             <div class="notification-item-left">
                 @if (item.Unread) {
                     <div class="unread-mark" />
