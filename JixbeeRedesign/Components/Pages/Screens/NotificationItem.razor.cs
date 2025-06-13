@@ -1,11 +1,13 @@
-﻿using JixbeeRedesign.Components.Pages.Screens;
-using JixbeeRedesign.Models;
+﻿using JixbeeRedesign.Models;
+using JixbeeRedesign.Services;
 using Microsoft.AspNetCore.Components;
 
-namespace JixbeeRedesign.Components.Components
+namespace JixbeeRedesign.Components.Pages.Screens
 {
     public partial class NotificationItem
     {
+        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NotificationService NotificationService { get; set; }
         [Parameter] public string? Class { get; set; }
         [Parameter] public EventCallback<int> ActiveIndexChanged { get; set; }
         [Parameter] public int InitialIndex { get; set; }
@@ -17,13 +19,7 @@ namespace JixbeeRedesign.Components.Components
 
         protected override async Task OnInitializedAsync()
         {
-            await LoadNotificatios();
-        }
-
-        private async Task LoadNotificatios()
-        {
             notification = await NotificationService.GetByIdAsync(NotificationId);
         }
-
     }
 }

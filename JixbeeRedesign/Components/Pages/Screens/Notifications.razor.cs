@@ -1,7 +1,6 @@
 ﻿using JixbeeRedesign.Models;
 using JixbeeRedesign.Services;
 using Microsoft.AspNetCore.Components;
-using static JixbeeRedesign.Components.Components.NotificationItem;
 
 namespace JixbeeRedesign.Components.Pages.Screens
 {

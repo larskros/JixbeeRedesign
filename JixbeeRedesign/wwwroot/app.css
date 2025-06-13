@@ -179,7 +179,8 @@ h3 {
 }
 
 .mud-input.mud-input-outlined {
-    background-color: var(--textinput) !important;
+    background-color: var(--white) !important;
+    box-shadow: inset 0 0 0 1px var(--black10);
 }
 .mud-input.mud-input-outlined .mud-input-outlined-border {
     border: none;
@@ -188,10 +189,11 @@ h3 {
 /* Mud Input Filled */
 .mud-input.mud-input-filled {
     border-radius: 8px;
-    background-color: var(--textinput);
+    background-color: var(--white);
+    box-shadow: inset 0 0 0 1px var(--black10);
 }
     .mud-input.mud-input-filled:hover {
-        background-color: var(--textinput);
+        background-color: var(--white) !important;
     }
 .mud-input-slot.mud-input-root.mud-input-root-filled {
     padding: 12px !important;
@@ -239,6 +241,7 @@ h3 {
 
 .input-container-wrapper {
     display: flex;
+    gap: 24px;
 }
 .input-container {
     display: flex;
@@ -255,10 +258,30 @@ h3 {
     font-size: 18px !important;
 }
 
-.number-select {
-    width: 100px;
-    font-size: 18px;
+.icon-input {
+    background-color: var(--white);
+    box-shadow: inset 0 0 0 1px var(--black10);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+    height: 43px;
 }
+    .icon-input .mud-input-control-input-container .mud-input input {
+        padding: 0;
+    }
+    .icon-input:has(.mud-disabled) {
+        background-color: var(--textinput);
+        box-shadow: none;
+    }
+        .icon-input:has(.mud-disabled) .mud-input-adornment-start .mud-icon-root.mud-svg-icon {
+            fill: var(--black20) !important;
+        }
+
+    .number-select {
+        width: 100px;
+        font-size: 18px;
+    }
 
 /* Mud Switches */
 .mud-switch-button .mud-switch-thumb-medium {
@@ -284,7 +307,7 @@ h3 {
     height: 24px;
 }
 .mud-input-control.mud-input-control-boolean-input {
-    margin: 4px 0;
+    margin: auto;
 }
 
 /* Search Bar */

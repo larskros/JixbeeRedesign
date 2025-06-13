@@ -1,0 +1,28 @@
+﻿.selected-item-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+    .selected-item-options .title {
+        font-weight: 600;
+    }
+
+    .selected-item-options .date {
+        color: var(--black50);
+        font-weight: 500;
+        font-size: 14px;
+    }
+.recurring-payment-edit-form-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.recurring-payment-edit-form-card ::deep button {
+    margin-top: 24px;
+}
+
+.recurring-payment-edit-container ::deep form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}

@@ -15,6 +15,11 @@ namespace JixbeeRedesign.Components.Pages.Screens
         [Inject] public NavigationManager NavigationManager { get; set; }
         [Inject] public RecurringPaymentService RecurringPaymentService { get; set; }
 
+        private bool showPopupEdit { get; set; }
+        private int popupHeightEdit { get; set; } = 0;
+        private string popupBgColorEdit { get; set; } = "rgba(31, 31, 31, 0)";
+        private string visibleEdit { get; set; } = "hidden";
+        private string popupButtonTextEdit { get; set; } = "Aanpassen";
         private bool showPopup { get; set; }
         private int popupHeight { get; set; } = 0;
         private string popupBgColor { get; set; } = "rgba(31, 31, 31, 0)";
@@ -23,6 +28,8 @@ namespace JixbeeRedesign.Components.Pages.Screens
         private bool isDisabled { get; set; }
 
         private EditForm editForm;
+        private RecurringPayment? recurringPayment;
+        [Parameter] public int RecurringPaymentId { get; set; }
 
         private List<RecurringPayment> allRecurringPayments = new();
         private decimal? recurringPaymentAmount { get; set; }
@@ -36,11 +43,14 @@ namespace JixbeeRedesign.Components.Pages.Screens
         private bool showDeleteButton { get; set; }
 
         private int activeIndex = 0;
+        private RecurringPayment viewModel = new RecurringPayment();
 
 
         protected override async Task OnInitializedAsync()
         {
+            recurringPayment = new RecurringPayment();
             allRecurringPayments = await RecurringPaymentService.GetAllAsync();
+            //recurringPayment = await RecurringPaymentService.GetByIdAsync(RecurringPaymentId);
             if (editForm?.EditContext == null)
             {
                 Console.WriteLine("??? EditContext is null???");
@@ -61,6 +71,7 @@ namespace JixbeeRedesign.Components.Pages.Screens
 
         private void HandleNewRecurringPayment()
         {
+            recurringPayment = new RecurringPayment();
             showPopup = true;
             popupHeight = 90;
             popupBgColor = "rgba(31, 31, 31, 0.5)";
@@ -76,10 +87,19 @@ namespace JixbeeRedesign.Components.Pages.Screens
             visible = "hidden";
             StateHasChanged();
         }
+        private async void ClosePopupEdit()
+        {
+            showPopupEdit = false;
+            popupHeightEdit = 0;
+            popupBgColorEdit = "rgba(31, 31, 31, 0)";
+            await Task.Delay(350);
+            visibleEdit = "hidden";
+            StateHasChanged();
+        }
 
         private void HandleTitleInput(string value)
         {
-            recurringPaymentTitle = value;
+            recurringPayment.Title = value;
             if(string.IsNullOrEmpty(value))
             {
                 RecurringPaymentTitleClass = "none";
@@ -94,7 +114,32 @@ namespace JixbeeRedesign.Components.Pages.Screens
 
         private void CheckFields()
         {
-            if(string.IsNullOrWhiteSpace(recurringPaymentTitle) || recurringPaymentAmount == 0 || recurringPaymentAmount == null)
+            if(string.IsNullOrWhiteSpace(recurringPayment.Title) || recurringPayment.Amount == 0 || recurringPayment.Amount == null)
+            {
+                isDisabled = true;
+            }
+            else
+            {
+                isDisabled = false;
+            }
+        }
+        private void HandleTitleInputEdit(string value)
+        {
+            recurringPayment.Title = value;
+            if (string.IsNullOrEmpty(value))
+            {
+                RecurringPaymentTitleClass = "none";
+            }
+            else
+            {
+                RecurringPaymentTitleClass = "filled-in-title";
+            }
+            CheckFieldsEdit();
+            StateHasChanged();
+        }
+        private void CheckFieldsEdit()
+        {
+            if (string.IsNullOrWhiteSpace(recurringPayment.Title) || recurringPayment.Amount == 0 || recurringPayment.Amount == null)
             {
                 isDisabled = true;
             }
@@ -131,22 +176,38 @@ namespace JixbeeRedesign.Components.Pages.Screens
             };
         }
 
-        private void HandleOnValidSubmit()
+        private async void HandleOnValidSubmit(RecurringPayment item)
         {
-
+            var newPayment = new RecurringPayment
+            {
+                Id = allRecurringPayments.Count + 1,
+                Title = item.Title,
+                Amount = item.Amount,
+                DayOfTheMonth = item.DayOfTheMonth,
+                RemainingPayments = new Random().Next(1,40),
+            };
+            Console.WriteLine($"Submitted: id={item.Id}, title={item.Title}, amount={item.Amount}, day={item.DayOfTheMonth}");
+            allRecurringPayments.Add(newPayment);
+            ClosePopup();
         }
 
-        private void RemoveRecurringPayment()
+        private void RemoveRecurringPayment(RecurringPayment item)
         {
-            
+            allRecurringPayments.Remove(item);
         }
 
-        private void EditRecurringPayment(RecurringPayment item)
+        private async void EditRecurringPayment(RecurringPayment item)
         {
             if (item.JustSwiped)
                 return;
 
-            NavigationManager.NavigateTo($"/opnames/gepland/{item.Id}");
+            recurringPayment = await RecurringPaymentService.GetByIdAsync(item.Id);
+            //NavigationManager.NavigateTo($"/opnames/gepland/{item.Id}");
+            showPopupEdit = true;
+            popupHeightEdit = 90;
+            popupBgColorEdit = "rgba(31, 31, 31, 0.5)";
+            visibleEdit = "visible";
+            StateHasChanged();
         }
     }
 }

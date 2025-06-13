@@ -13,13 +13,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Components\Components\NotificationItem.razor">
+    <Content Update="Components\Pages\Screens\NotificationItem.razor">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Components\Components\NotificationItem.razor.css">
+    <None Update="Components\Pages\Screens\NotificationItem.razor.css">
       <CssScope>custom-scope-identifier</CssScope>
     </None>
   </ItemGroup>

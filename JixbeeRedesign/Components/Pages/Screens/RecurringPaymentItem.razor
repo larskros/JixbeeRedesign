@@ -1,0 +1,77 @@
+﻿@page "/opnames/gepland/{RecurringPaymentId:int}"
+@using System.Globalization
+<MudPopoverProvider />
+
+<SecondaryTopbar PageTitle="Opname bewerken" GoBack="@(() => NavigationManager.NavigateTo("/opnames/gepland"))" />
+<div class="app-content recurring-payment-item-page">
+    @if (recurringPayment == null)
+    {
+        <p>Notificatie niet gevonden.</p>
+    }
+    else
+    {
+        <div class="recurring-payment-edit-container">
+            <EditForm @ref="editForm"
+                      Model="RecurringPaymentService"
+                      OnValidSubmit="HandleOnValidSubmit">
+                <DataAnnotationsValidator />
+                <Card Class="recurring-payment-edit-form-card">
+                <div class="input-container">
+                    <MudInputLabel>Naam</MudInputLabel>
+                    <MudTextField T="string"
+                                  @bind-Value="@recurringPayment.Title"
+                                  Class="general-input"
+                                  TextChanged="() => HandleTitleInput(recurringPayment.Title)"
+                                  Placeholder="Naam"
+                                  Underline="false"
+                                  Variant="Variant.Filled" />
+                </div>
+                <div class="input-container-wrapper">
+                    <div class="input-container">
+                        <MudInputLabel>Bedrag</MudInputLabel>
+                        <MudNumericField T="double"
+                                         Required
+                                         @bind-Value="@recurringPayment.Amount"
+                                         Class="general-input icon-input"
+                                         TextChanged="() => CheckFields()"
+                                         HideSpinButtons="true"
+                                         Variant="Variant.Text"
+                                         Placeholder="0,00"
+                                         Format="N2"
+                                         Underline="false"
+                                         Adornment="Adornment.Start"
+                                         AdornmentIcon="@Icons.Material.Filled.Euro" />
+                    </div>
+                    <div class="input-container">
+                        <MudInputLabel>Dag</MudInputLabel>
+                        <div class="select-wrapper">
+                            <MudIcon Icon="@Icons.Material.Outlined.KeyboardArrowDown" Class="select-arrow" />
+                            <select class="number-select" @bind="@recurringPayment.DayOfTheMonth" id="daySelect">
+                                @foreach (var day in days)
+                                {
+                                    <option value="@day">
+                                        @day
+                                    </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-container">
+                    <MudInputLabel>Einddatum</MudInputLabel>
+                    <div class="input-field-row">
+                        <MudSwitch T="bool" @bind-Value="hasEndDate" />
+                        <MudTextField T="string" Disabled="!hasEndDate" Class="general-input icon-input" Placeholder="dd-mm-jaar" Underline="false" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Outlined.CalendarMonth" Mask="@(new DateMask("dd-mm-jjjj", 'j', 'm', 'd'))" />
+                    </div>
+                    </div>
+                <MudButton ButtonType="ButtonType.Submit" Disabled="@isDisabled" Class="primary-button">Aanpassen</MudButton>
+
+                </Card>
+            </EditForm>
+        </div>
+        <div class="selected-item-options">
+            <span class="title">Opties</span>
+        </div>
+        <MudButton Class="secondary-button" StartIcon="@Icons.Material.Outlined.Delete">Opname verwijderen</MudButton>
+    }
+</div>
