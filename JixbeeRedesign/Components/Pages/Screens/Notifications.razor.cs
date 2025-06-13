@@ -1,4 +1,5 @@
 ﻿using JixbeeRedesign.Models;
+using JixbeeRedesign.Services;
 using Microsoft.AspNetCore.Components;
 using static JixbeeRedesign.Components.Components.NotificationItem;
 
@@ -9,6 +10,8 @@ namespace JixbeeRedesign.Components.Pages.Screens
         [Parameter] public string? Class { get; set; }
         [Parameter] public EventCallback<int> ActiveIndexChanged { get; set; }
         [Parameter] public int InitialIndex { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public NotificationService NotificationService { get; set; }
 
         private List<Notification> allNotifications = new();
 

@@ -1,13 +1,12 @@
 ﻿@page "/opnames/gepland"
-@inject NavigationManager NavigationManager
 <MudPopoverProvider />
 
 <SecondaryTopbar PageTitle="Ingeplande opnames" GoBack="@(() => NavigationManager.NavigateTo("/"))" />
 <div class="app-content recurring-payments-page">
     @foreach (var item in allRecurringPayments)
     {
-        <MudSwipeArea OnSwipeEnd="@(e => HandleSwipe(e.SwipeDirection, item))">
-            <Card Class="@GetCardClass(item)">
+        <MudSwipeArea OnSwipeEnd="@(e => HandleSwipe(e.SwipeDirection, item))" >
+            <Card Class="@GetCardClass(item)" CardClick="() => EditRecurringPayment(item)">
                 <div class="recurring-payment-title">
                     @item.Title
                 </div>
@@ -47,7 +46,7 @@
            ClosePopup="ClosePopup">
         <div class="popup-content">
             <EditForm   @ref="editForm" 
-                        Model="model" 
+                        Model="RecurringPaymentService" 
                         OnValidSubmit="HandleOnValidSubmit">
                 <DataAnnotationsValidator />
                 <div class="input-container">

@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using JixbeeRedesign.Models;
+using JixbeeRedesign.Services;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using MudBlazor;
+using static MudBlazor.CategoryTypes;
 
 namespace JixbeeRedesign.Components.Pages.Screens
 {
@@ -9,8 +12,8 @@ namespace JixbeeRedesign.Components.Pages.Screens
         [Parameter] public string? Class { get; set; }
         [Parameter] public EventCallback<int> ActiveIndexChanged { get; set; }
         [Parameter] public int InitialIndex { get; set; }
-
-        private List<RecurringPayment> allRecurringPayments = new List<RecurringPayment>();
+        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public RecurringPaymentService RecurringPaymentService { get; set; }
 
         private bool showPopup { get; set; }
         private int popupHeight { get; set; } = 0;
@@ -20,7 +23,8 @@ namespace JixbeeRedesign.Components.Pages.Screens
         private bool isDisabled { get; set; }
 
         private EditForm editForm;
-        private RecurringPayment? model = new RecurringPayment();
+
+        private List<RecurringPayment> allRecurringPayments = new();
         private decimal? recurringPaymentAmount { get; set; }
         private int[] days = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28 };
 
@@ -31,20 +35,12 @@ namespace JixbeeRedesign.Components.Pages.Screens
         private SwipeDirection swipeDirection;
         private bool showDeleteButton { get; set; }
 
-        public class RecurringPayment
-        {
-            public string? Title { get; set; }
-            public int DayOfTheMonth { get; set; }
-            public int RemainingPayments { get; set; }
-            public double Amount { get; set; }
-            public SwipeDirection? SwipedDirection { get; set; } = null;
-        }
-
         private int activeIndex = 0;
 
 
         protected override async Task OnInitializedAsync()
         {
+            allRecurringPayments = await RecurringPaymentService.GetAllAsync();
             if (editForm?.EditContext == null)
             {
                 Console.WriteLine("??? EditContext is null???");
@@ -53,36 +49,8 @@ namespace JixbeeRedesign.Components.Pages.Screens
             {
                 isDisabled = editForm.EditContext.Validate();
             }
-            await LoadRecurringPayments();
         }
 
-        private async Task LoadRecurringPayments()
-        {
-            allRecurringPayments = new List<RecurringPayment>
-            {
-                new RecurringPayment
-                {
-                    Title = "Salaris",
-                    DayOfTheMonth = 23,
-                    RemainingPayments = 16,
-                    Amount = 650
-                },
-                new RecurringPayment
-                {
-                    Title = "Koffie budget",
-                    DayOfTheMonth = 28,
-                    RemainingPayments = 1,
-                    Amount = 40
-                },
-                new RecurringPayment
-                {
-                    Title = "Telefoon abonnement",
-                    DayOfTheMonth = 9,
-                    RemainingPayments = 4,
-                    Amount = 15
-                }
-            };
-        }
 
         private async Task OnActiveIndexChanged(int index)
         {
@@ -136,14 +104,20 @@ namespace JixbeeRedesign.Components.Pages.Screens
             }
         }
 
-        private void HandleSwipe(SwipeDirection direction, RecurringPayment swipedItem)
+        private async void HandleSwipe(SwipeDirection direction, RecurringPayment swipedItem)
         {
             swipeDirection = direction;
             foreach (var item in allRecurringPayments)
             {
                 item.SwipedDirection = (item == swipedItem) ? direction : null;
+                item.JustSwiped = false;
             }
+            swipedItem.JustSwiped = true;
             showDeleteButton = true;
+            StateHasChanged();
+
+            await Task.Delay(300);
+            swipedItem.JustSwiped = false;
         }
 
         public string GetCardClass(RecurringPayment item)
@@ -165,6 +139,14 @@ namespace JixbeeRedesign.Components.Pages.Screens
         private void RemoveRecurringPayment()
         {
             
+        }
+
+        private void EditRecurringPayment(RecurringPayment item)
+        {
+            if (item.JustSwiped)
+                return;
+
+            NavigationManager.NavigateTo($"/opnames/gepland/{item.Id}");
         }
     }
 }
