@@ -1,0 +1,32 @@
+﻿@page "/instellingen"
+@using System.Globalization
+<MudPopoverProvider />
+
+<SecondaryTopbar PageTitle="Instellingen" GoBack="@(() => NavigationManager.NavigateTo("/"))" />
+<div class="app-content settings-page">
+    <div class="setting-container">
+        <div class="setting-item-header">
+            <MudIcon Icon="@Icons.Material.Outlined.Language" />
+            <span class="title">Taal</span>
+        </div>
+        <MudRadioGroup @bind-Value="preferredLanguage">
+        <div class="setting-item-content">
+                <div class="setting-item-input">
+                    <div class="settings-item-input-header">
+                        Nederlands
+                    </div>
+                    <MudRadio T="string" Value="@("nl")" Dense="true" />
+                </div>
+                <div class="setting-item-input">
+                    <div class="settings-item-input-header">Engels</div>
+                    <MudRadio T="string" Value="@("en")" Dense="true" />
+                </div>
+            </div>
+        </MudRadioGroup>
+        <div class="divider dark" />
+        <div class="setting-item-header">
+            <MudIcon Icon="@Icons.Material.Outlined.ContactSupport" />
+            <span class="title">FAQ</span>
+        </div>
+    </div>
+</div>

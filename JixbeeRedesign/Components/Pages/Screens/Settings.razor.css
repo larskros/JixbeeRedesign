@@ -1,0 +1,65 @@
+﻿.app-content {
+    width: 100vw;
+    padding: 20px;
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 100vh;
+}
+
+.settings-page {
+
+}
+
+.setting-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.setting-item-header {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    align-self: flex-start;
+    margin-bottom: 16px;
+}
+    .setting-item-header span {
+        font-weight: 500;
+    }
+
+.setting-item-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.setting-item-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+    .setting-item-input ::deep .mud-input-control.mud-input-control-boolean-input {
+        margin: 0;
+    }
+
+.settings-page .divider {
+    margin: 16px 0;
+}
+
+    .setting-container > ::deep .mud-input-control.mud-input-control-boolean-input {
+        width: 100%;
+        padding-left: 16px !important;
+    }
+.settings-page ::deep .mud-input-control.mud-input-control-boolean-input {
+    margin: 0 !important;
+    align-self: flex-end;
+}
+
+.setting-item-input ::deep .mud-icon-root.mud-svg-icon {
+    fill: var(--black100);
+}
