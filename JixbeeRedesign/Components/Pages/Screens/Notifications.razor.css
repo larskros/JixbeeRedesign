@@ -9,7 +9,7 @@
 }
 
 .notifications-page {
-    gap: 0px !important;
+    gap: 16px !important;
 }
 
 .notification-item {
@@ -17,23 +17,25 @@
     justify-content: space-between;
     align-items: center;
     gap: 8px;
-    padding: 20px 0;
+    padding: 12px;
+    min-height: 64px;
 }
 
 .notification-item-left {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
     font-weight: 400;
-    width: calc(80% - 8px);
+    width: calc(78% - 8px);
     font-size: 14px;
 }
-.notification-item-left .unread-mark {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background-color: var(--primarycolor100);
-}
+    .notification-item-left .unread-mark {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background-color: var(--primarycolor100);
+        flex-shrink: 0;
+    }
     .notification-item-left:has(.unread-mark) {
         font-weight: 600;
     }
@@ -47,7 +49,7 @@
     color: var(--black50);
     font-weight: 600;
     font-size: 12px;
-    width: 20%;
+    width: 22%;
 }
 .notification-item-right ::deep svg {
     width: 20px !important;

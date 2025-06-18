@@ -5,20 +5,19 @@
 <SecondaryTopbar PageTitle="Notificaties" GoBack="@(() => NavigationManager.NavigateTo("/"))" />
 <div class="app-content notifications-page">
     @foreach (var item in allNotifications) {
-        <div class="notification-item" @onclick="() => OpenNotification(item.Id)">
+        <Card Class="background-card notification-item" CardClick="() => OpenNotification(item.Id)">
             <div class="notification-item-left">
                 @if (item.Unread) {
                     <div class="unread-mark" />
-                    @item.Title
+                    <span>@item.Title</span>
                 } else {
-                    @item.Title
+                    <span>@item.Title</span>
                 }
             </div>
             <div class="notification-item-right">
                 @item.Date?.ToString("dd MMM")[0..6]
                 <MudIcon Icon="@Icons.Material.Outlined.ChevronRight" Size="Size.Small" />
             </div>
-        </div>
-        <div class="divider dark" />
+        </Card>
     }
 </div>

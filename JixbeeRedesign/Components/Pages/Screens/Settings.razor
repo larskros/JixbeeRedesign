@@ -4,7 +4,7 @@
 
 <SecondaryTopbar PageTitle="Instellingen" GoBack="@(() => NavigationManager.NavigateTo("/"))" />
 <div class="app-content settings-page">
-    <div class="setting-container">
+    <Card Class="background-card setting-container">
         <div class="setting-item-header">
             <MudIcon Icon="@Icons.Material.Outlined.Language" />
             <span class="title">Taal</span>
@@ -23,10 +23,25 @@
                 </div>
             </div>
         </MudRadioGroup>
-        <div class="divider dark" />
+        <div class="divider" />
+        <div class="setting-item-header">
+            <MudIcon Icon="@Icons.Material.Outlined.Contrast" />
+            <span class="title">Thema</span>
+        </div>
+        <MudRadioGroup T="string" Value="@preferredTheme"  ValueChanged="@OnThemeChanged" >
+            <div class="setting-item-content">
+                <div class="setting-item-input">
+                    <MudRadio T="string" Class="light-theme" Value="@("light")" CheckedIcon="@Icons.Material.Outlined.CheckCircle" UncheckedIcon="@Icons.Material.Outlined.Circle" Dense="true" />
+                    <MudRadio T="string" Class="dark-theme" Value="@("dark")" CheckedIcon="@Icons.Material.Filled.CheckCircle" UncheckedIcon="@Icons.Material.Filled.Circle" Dense="true" />
+                    <MudRadio T="string" Class="creme-theme" Value="@("creme")" CheckedIcon="@Icons.Material.Filled.CheckCircle" UncheckedIcon="@Icons.Material.Filled.Circle" Dense="true" />
+                    <MudRadio T="string" Class="gold-theme" Value="@("gold")" CheckedIcon="@Icons.Material.Filled.CheckCircle" UncheckedIcon="@Icons.Material.Filled.Circle" Dense="true" />
+                </div>
+            </div>
+        </MudRadioGroup>
+        <div class="divider" />
         <div class="setting-item-header">
             <MudIcon Icon="@Icons.Material.Outlined.ContactSupport" />
             <span class="title">FAQ</span>
         </div>
-    </div>
+    </Card>
 </div>

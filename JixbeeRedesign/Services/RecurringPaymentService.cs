@@ -1,5 +1,6 @@
 ﻿using JixbeeRedesign.Components.Pages.Screens;
 using JixbeeRedesign.Models;
+using static MudBlazor.CategoryTypes;
 
 namespace JixbeeRedesign.Services
 {
@@ -17,5 +18,20 @@ namespace JixbeeRedesign.Services
         public Task<RecurringPayment?> GetByIdAsync(int id) =>
             Task.FromResult(_recurringPayments.FirstOrDefault(n => n.Id == id));
 
+        public Task<RecurringPayment?> UpdateByIdAsync(int id, RecurringPayment updatedPayment)
+        {
+            var current = _recurringPayments.FirstOrDefault(p => p.Id == id);
+            if (current is null)
+                return Task.FromResult<RecurringPayment?>(null);
+
+            current.Title = updatedPayment.Title;
+            current.DayOfTheMonth = updatedPayment.DayOfTheMonth;
+            current.RemainingPayments = updatedPayment.RemainingPayments;
+            current.Amount = updatedPayment.Amount;
+            current.EndDate = updatedPayment.EndDate;
+
+            return Task.FromResult<RecurringPayment?>(current);
+        }
+            
     }
 }

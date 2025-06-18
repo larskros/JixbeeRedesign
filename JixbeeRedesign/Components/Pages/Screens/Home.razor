@@ -77,14 +77,15 @@
 
 		    <div class="divider"></div>
 
-		    <div class="withdraw-input-wrapper">
+            <div class="withdraw-input-wrapper" @ref="_inputContainer">
                 <MudNumericField T="decimal?" 
                                  @bind-Value="WithdrawAmount"
                                  TextChanged="() => CheckFields()"
                                  Max="MaximumSalary"
                                  HideSpinButtons="true"
                                  Immediate="true"
-                                 Format="N2"
+                                 Format="@CurrentFormat"
+                                 @ref="_withdrawFieldRef"
                                  Variant="Variant.Text" 
                                  Placeholder="0,00" 
                                  Underline="false" 

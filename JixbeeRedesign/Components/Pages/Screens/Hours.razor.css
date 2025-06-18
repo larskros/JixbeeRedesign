@@ -141,7 +141,7 @@
     width: 100%;
     height: 6px;
     border-radius: 3px;
-    background-color: var(--primarycolor15);
+    background-color: var(--primarycolor10rgba);
 }
 .progress-fill {
     width: 50%;

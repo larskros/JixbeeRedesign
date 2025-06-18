@@ -48,12 +48,13 @@
     }
 
 .settings-page .divider {
-    margin: 16px 0;
+    margin: 20px 0;
 }
 
     .setting-container > ::deep .mud-input-control.mud-input-control-boolean-input {
-        width: 100%;
+        width: calc(100% - 32px);
         padding-left: 16px !important;
+        padding-right: 16px !important;
     }
 .settings-page ::deep .mud-input-control.mud-input-control-boolean-input {
     margin: 0 !important;
@@ -62,4 +63,17 @@
 
 .setting-item-input ::deep .mud-icon-root.mud-svg-icon {
     fill: var(--black100);
+}
+
+::deep .light-theme svg {
+    fill: var(--black100) !important;
+}
+::deep .dark-theme svg {
+    fill: var(--black100) !important;
+}
+::deep .creme-theme svg {
+    fill: #f5d4a3 !important;
+}
+::deep .gold-theme svg {
+    fill: #FBA43A !important;
 }

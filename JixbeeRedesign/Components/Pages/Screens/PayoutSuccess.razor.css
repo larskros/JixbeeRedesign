@@ -41,7 +41,7 @@ h2 {
     font-weight: 500;
 }
     .withdrawal-overview-info-item ::deep .mud-icon-root.mud-svg-icon {
-        background-color: var(--primarycolor10);
+        background-color: var(--primarycolor10rgba);
         width: 32px;
         height: 32px;
         padding: 6px;

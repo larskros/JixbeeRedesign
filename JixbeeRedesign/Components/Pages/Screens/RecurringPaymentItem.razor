@@ -21,7 +21,7 @@
                     <MudTextField T="string"
                                   @bind-Value="@recurringPayment.Title"
                                   Class="general-input"
-                                  TextChanged="() => HandleTitleInput(recurringPayment.Title)"
+                                  TextChanged="() => CheckFields()"
                                   Placeholder="Naam"
                                   Underline="false"
                                   Variant="Variant.Filled" />
@@ -29,7 +29,7 @@
                 <div class="input-container-wrapper">
                     <div class="input-container">
                         <MudInputLabel>Bedrag</MudInputLabel>
-                        <MudNumericField T="double"
+                        <MudNumericField T="decimal?"
                                          Required
                                          @bind-Value="@recurringPayment.Amount"
                                          Class="general-input icon-input"

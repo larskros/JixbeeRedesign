@@ -1,14 +1,17 @@
 ﻿using JixbeeRedesign.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.JSInterop;
+using MudBlazor;
 using System.Globalization;
 using static JixbeeRedesign.Components.Pages.Screens.RecurringPayments;
 
 namespace JixbeeRedesign.Components.Pages.Screens
 {
-    public partial class Home
+    public partial class Home : ComponentBase, IAsyncDisposable
     {
         [Inject] protected WithdrawStateService WithdrawState { get; set; }
+        [Inject] private IJSRuntime JS { get; set; }
         [Parameter] public string? Class { get; set; }
         [Parameter] public EventCallback<int> ActiveIndexChanged { get; set; }
         [Parameter] public int InitialIndex { get; set; }
@@ -33,9 +36,25 @@ namespace JixbeeRedesign.Components.Pages.Screens
         private decimal? WithdrawAmount { get; set; }
         private bool isDisabled { get; set; }
 
+        private string? CurrentFormat = "N2";
+        private ElementReference _inputContainer;
+        private MudNumericField<decimal?>? _withdrawFieldRef;
+        private DotNetObjectReference<Home>? _dotNetRef;
+
 
         private EditForm editForm;
         private Withdraw? model = new Withdraw();
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (firstRender)
+            {
+                _dotNetRef = DotNetObjectReference.Create(this);
+
+                await JS.InvokeVoidAsync("numericInputHelper.setupFocusListeners", _inputContainer, _dotNetRef);
+                await JS.InvokeVoidAsync("numericInputHelper.setupNumericInputFilter", _inputContainer);
+            }
+        }
 
         protected override void OnInitialized()
         {
@@ -57,6 +76,25 @@ namespace JixbeeRedesign.Components.Pages.Screens
                     popupTitle = "Salaris";
                     break;
             }
+        }
+
+        [JSInvokable]
+        public void OnInputFocus()
+        {
+            CurrentFormat = "G";
+            InvokeAsync(StateHasChanged);
+        }
+
+        [JSInvokable]
+        public void OnInputBlur()
+        {
+            CurrentFormat = "N2";
+            InvokeAsync(StateHasChanged);
+        }
+
+        public async ValueTask DisposeAsync()
+        {
+            _dotNetRef?.Dispose();
         }
 
         private class Withdraw

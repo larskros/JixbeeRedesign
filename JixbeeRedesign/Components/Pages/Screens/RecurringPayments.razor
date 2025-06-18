@@ -28,7 +28,7 @@
                     </MudChip>
                 }
                 <div class="recurring-payment-amount">
-                    €@item.Amount.ToString("N2")
+                    €@item.Amount?.ToString("N2")
                 </div>
             </Card>
             @if (item.SwipedDirection == SwipeDirection.RightToLeft) {
@@ -48,8 +48,8 @@
            ClosePopup="ClosePopupEdit">
         <div class="popup-content">
             <EditForm @ref="editForm"
-                          Model="recurringPayment"
-                      OnValidSubmit="() => HandleOnValidSubmit(recurringPayment)">
+                      Model="recurringPayment"
+                      OnValidSubmit="() => HandleOnSubmitSaveEdit(recurringPayment)">
                 <DataAnnotationsValidator />
                 <div class="input-container">
                     <MudInputLabel>Naam</MudInputLabel>
@@ -65,7 +65,7 @@
                 <div class="input-container-wrapper">
                     <div class="input-container">
                         <MudInputLabel>Bedrag</MudInputLabel>
-                        <MudNumericField T="double"
+                        <MudNumericField T="decimal?"
                                          Required
                                          @bind-Value="@recurringPayment.Amount"
                                          Class="general-input icon-input"
@@ -97,9 +97,10 @@
                 <div class="input-container">
                     <MudInputLabel>Einddatum</MudInputLabel>
                     <div class="input-field-row">
-                        <MudSwitch T="bool" @bind-Value="hasEndDate" />
-                        <MudTextField T="string" Disabled="!hasEndDate" Class="general-input icon-input" Placeholder="dd-mm-jaar" Underline="false" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Outlined.CalendarMonth" Mask="@(new DateMask("dd-mm-jjjj", 'j', 'm', 'd'))" />
-                    </div>
+                            <MudSwitch T="bool" Value="hasEndDate" ValueChanged="@(e => { hasEndDate = e; CheckFields(); })"
+                                       ValueExpression="@(() => hasEndDate)" />
+                            <MudTextField T="DateTime?" @bind-Value="recurringPayment.EndDate" TextChanged="() => CheckFields()" Disabled="!hasEndDate" Class="general-input icon-input" Placeholder="dd-mm-jaar" Underline="false" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Outlined.CalendarMonth" Mask="@(new DateMask("dd-mm-jjjj", 'j', 'm', 'd'))" />
+                        </div>
                 </div>
                 <MudButton ButtonType="ButtonType.Submit" Disabled="@isDisabled" Class="primary-button">Opslaan</MudButton>
             </EditForm>
@@ -127,24 +128,26 @@
                     <MudInputLabel>Naam</MudInputLabel>
                     <MudTextField T="string" 
                         @bind-Value="@recurringPayment.Title" 
-                        Class="general-input" 
-                        TextChanged="() => HandleTitleInput(recurringPayment.Title)" 
+                        Class="general-input"
+                        TextChanged="() => CheckFields()"
                         Placeholder="Naam" 
+                        Immediate="true"
                         Underline="false" 
                         Variant="Variant.Filled" />
                 </div>
                 <div class="input-container-wrapper">
-                    <div class="input-container">
+                    <div class="input-container" @ref="_inputContainer2">
                         <MudInputLabel>Bedrag</MudInputLabel>
-                        <MudNumericField T="double"
+                            <MudNumericField T="decimal?"
                         Required
                         @bind-Value="@recurringPayment.Amount"
                         Class="general-input icon-input"
                         TextChanged="() => CheckFields()"
+                        Format="@CurrentFormat"
                         HideSpinButtons="true"
+                        Immediate="true"
                         Variant="Variant.Text"
                         Placeholder="0,00"
-                        Format="N2"
                         Underline="false"
                         Adornment="Adornment.Start"
                         AdornmentIcon="@Icons.Material.Filled.Euro" />
@@ -153,7 +156,7 @@
                         <MudInputLabel>Dag</MudInputLabel>
                         <div class="select-wrapper">
                             <MudIcon Icon="@Icons.Material.Outlined.KeyboardArrowDown" Class="select-arrow" />
-                            <select class="number-select" @bind="@recurringPayment.DayOfTheMonth" id="daySelect">
+                            <select class="number-select" @onchange="OnDayChanged" id="daySelect">
                                 @foreach(var day in days)
                                 {
                                     <option value="@day">
@@ -167,8 +170,9 @@
                 <div class="input-container">
                     <MudInputLabel>Einddatum</MudInputLabel>
                     <div class="input-field-row">
-					    <MudSwitch T="bool" @bind-Value="hasEndDate" />
-                           <MudTextField T="string" Disabled="!hasEndDate" Class="general-input icon-input" Placeholder="dd-mm-jaar" Underline="false" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Outlined.CalendarMonth" Mask="@(new DateMask("dd-mm-jjjj", 'j', 'm', 'd'))" />
+                            <MudSwitch T="bool" Value="hasEndDate" ValueChanged="@(e => { hasEndDate = e; CheckFields(); })"
+                                       ValueExpression="@(() => hasEndDate)" />
+                           <MudTextField T="DateTime?" @bind-Value="recurringPayment.EndDate" TextChanged="() => CheckFields()" Disabled="!hasEndDate" Class="general-input icon-input" Placeholder="dd-mm-jaar" Underline="false" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Outlined.CalendarMonth" Mask="@(new DateMask("dd-mm-jjjj", 'j', 'm', 'd'))" />
 				    </div>
                 </div>
                 <MudButton ButtonType="ButtonType.Submit" Disabled="@isDisabled" Class="primary-button">Inplannen</MudButton>

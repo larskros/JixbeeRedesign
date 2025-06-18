@@ -50,13 +50,17 @@ namespace JixbeeRedesign.Components.Pages.Screens
 
         private void CheckFields()
         {
-            if (string.IsNullOrWhiteSpace(recurringPayment.Title) || recurringPayment.Amount == 0 || recurringPayment.Amount == null)
+            if (string.IsNullOrWhiteSpace(recurringPayment.Title) || recurringPayment.Amount == 0 || recurringPayment.Amount == null || recurringPayment.DayOfTheMonth == 0)
             {
                 isDisabled = true;
+                Console.WriteLine("button disabledddd");
+                Console.WriteLine("Title: " + recurringPayment.Title + ", Amount: " + recurringPayment.Amount + ", Day: " + recurringPayment.DayOfTheMonth);
             }
             else
             {
                 isDisabled = false;
+                Console.WriteLine("button enabledddd");
+                Console.WriteLine("Title: " + recurringPayment.Title + ", Amount: " + recurringPayment.Amount + ", Day: " + recurringPayment.DayOfTheMonth);
             }
         }
     }

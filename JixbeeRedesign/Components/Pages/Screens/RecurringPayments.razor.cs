@@ -2,18 +2,20 @@
 using JixbeeRedesign.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.JSInterop;
 using MudBlazor;
 using static MudBlazor.CategoryTypes;
 
 namespace JixbeeRedesign.Components.Pages.Screens
 {
-    public partial class RecurringPayments
+    public partial class RecurringPayments : Microsoft.AspNetCore.Components.ComponentBase, IAsyncDisposable
     {
         [Parameter] public string? Class { get; set; }
         [Parameter] public EventCallback<int> ActiveIndexChanged { get; set; }
         [Parameter] public int InitialIndex { get; set; }
         [Inject] public NavigationManager NavigationManager { get; set; }
         [Inject] public RecurringPaymentService RecurringPaymentService { get; set; }
+        [Inject] private IJSRuntime JS { get; set; }
 
         private bool showPopupEdit { get; set; }
         private int popupHeightEdit { get; set; } = 0;
@@ -45,6 +47,45 @@ namespace JixbeeRedesign.Components.Pages.Screens
         private int activeIndex = 0;
         private RecurringPayment viewModel = new RecurringPayment();
 
+        private string? CurrentFormat = "N2";
+        private ElementReference _inputContainer2;
+        private MudNumericField<double?>? _withdrawFieldRef;
+        private DotNetObjectReference<RecurringPayments>? _dotNetRef2;
+        private int remainingPayments { get; set; }
+
+        public int GetRemainingPayments(DateTime startDate, DateTime endDate, int dayOfMonth)
+        {
+            var now = DateTime.Now;
+
+            // If end date is in the past, no remaining payments
+            if (endDate < now)
+                return 0;
+
+            // Start from next due date
+            var nextPayment = new DateTime(now.Year, now.Month, 1).AddDays(dayOfMonth - 1);
+            if (now.Day > dayOfMonth)
+                nextPayment = nextPayment.AddMonths(1);
+
+            int months = 0;
+            while (nextPayment <= endDate)
+            {
+                months++;
+                nextPayment = nextPayment.AddMonths(1);
+            }
+
+            return months;
+        }
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (firstRender)
+            {
+                _dotNetRef2 = DotNetObjectReference.Create(this);
+
+                await JS.InvokeVoidAsync("numericInputHelper.setupFocusListeners", _inputContainer2, _dotNetRef2);
+                await JS.InvokeVoidAsync("numericInputHelper.setupNumericInputFilter", _inputContainer2);
+            }
+        }
 
         protected override async Task OnInitializedAsync()
         {
@@ -61,6 +102,24 @@ namespace JixbeeRedesign.Components.Pages.Screens
             }
         }
 
+        [JSInvokable]
+        public void OnInputFocus()
+        {
+            CurrentFormat = "G";
+            InvokeAsync(StateHasChanged);
+        }
+
+        [JSInvokable]
+        public void OnInputBlur()
+        {
+            CurrentFormat = "N2";
+            InvokeAsync(StateHasChanged);
+        }
+
+        public async ValueTask DisposeAsync()
+        {
+            _dotNetRef2?.Dispose();
+        }
 
         private async Task OnActiveIndexChanged(int index)
         {
@@ -69,14 +128,25 @@ namespace JixbeeRedesign.Components.Pages.Screens
             StateHasChanged();
         }
 
-        private void HandleNewRecurringPayment()
+        private async void HandleNewRecurringPayment()
         {
             recurringPayment = new RecurringPayment();
+            recurringPayment.DayOfTheMonth = 1;
             showPopup = true;
             popupHeight = 90;
             popupBgColor = "rgba(31, 31, 31, 0.5)";
             visible = "visible";
+            Console.WriteLine("Day of the month: " + recurringPayment.DayOfTheMonth);
+
+            CheckFields();
             StateHasChanged();
+
+            await Task.Delay(50);
+            _dotNetRef2 = DotNetObjectReference.Create(this);
+
+            await JS.InvokeVoidAsync("numericInputHelper.setupFocusListeners", _inputContainer2, _dotNetRef2);
+            await JS.InvokeVoidAsync("numericInputHelper.setupNumericInputFilter", _inputContainer2);
+
         }
         private async void ClosePopup()
         {
@@ -112,15 +182,32 @@ namespace JixbeeRedesign.Components.Pages.Screens
             StateHasChanged();
         }
 
+        public void OnDayChanged(ChangeEventArgs e)
+        {
+            if (int.TryParse(e.Value?.ToString(), out var day))
+                recurringPayment.DayOfTheMonth = day;
+            else
+                recurringPayment.DayOfTheMonth = 1;
+            CheckFields();
+        }
+
         private void CheckFields()
         {
-            if(string.IsNullOrWhiteSpace(recurringPayment.Title) || recurringPayment.Amount == 0 || recurringPayment.Amount == null)
+            bool allRequiredFieldsFilled =
+                !string.IsNullOrWhiteSpace(recurringPayment.Title) &&
+                recurringPayment.Amount != null &&
+                recurringPayment.Amount > 0 &&
+                recurringPayment.DayOfTheMonth > 0;
+            if (!allRequiredFieldsFilled || hasEndDate && recurringPayment.EndDate == null)
             {
-                isDisabled = true;
+                
+                isDisabled = true; //button disabled
+                Console.WriteLine("disabled: enddate: " + recurringPayment.EndDate + " switch: " + hasEndDate);
             }
             else
             {
-                isDisabled = false;
+                isDisabled = false; //button enabled
+                Console.WriteLine("enabled: enddate: " + recurringPayment.EndDate + " switch: " + hasEndDate);
             }
         }
         private void HandleTitleInputEdit(string value)
@@ -139,12 +226,14 @@ namespace JixbeeRedesign.Components.Pages.Screens
         }
         private void CheckFieldsEdit()
         {
-            if (string.IsNullOrWhiteSpace(recurringPayment.Title) || recurringPayment.Amount == 0 || recurringPayment.Amount == null)
+            if (string.IsNullOrWhiteSpace(recurringPayment.Title) || recurringPayment.Amount == 0 || recurringPayment.Amount == null || recurringPayment.DayOfTheMonth == 0)
             {
+                Console.WriteLine("edit");
                 isDisabled = true;
             }
             else
             {
+                Console.WriteLine("edit2");
                 isDisabled = false;
             }
         }
@@ -178,17 +267,35 @@ namespace JixbeeRedesign.Components.Pages.Screens
 
         private async void HandleOnValidSubmit(RecurringPayment item)
         {
+            if (hasEndDate)
+            {
+                remainingPayments = GetRemainingPayments(DateTime.Today, recurringPayment.EndDate.Value, recurringPayment.DayOfTheMonth);
+            }
+            else
+            {
+                remainingPayments = 0;
+            }
             var newPayment = new RecurringPayment
             {
                 Id = allRecurringPayments.Count + 1,
                 Title = item.Title,
                 Amount = item.Amount,
                 DayOfTheMonth = item.DayOfTheMonth,
-                RemainingPayments = new Random().Next(1,40),
+                RemainingPayments = remainingPayments,
+                EndDate = item.EndDate,
             };
-            Console.WriteLine($"Submitted: id={item.Id}, title={item.Title}, amount={item.Amount}, day={item.DayOfTheMonth}");
+            Console.WriteLine($"Submitted: id={item.Id}, title={item.Title}, amount={item.Amount}, day={item.DayOfTheMonth}, enddate={item.EndDate}");
             allRecurringPayments.Add(newPayment);
             ClosePopup();
+            ClosePopupEdit();
+        }
+        private async void HandleOnSubmitSaveEdit(RecurringPayment item)
+        {
+            await RecurringPaymentService.UpdateByIdAsync(item.Id, item);
+            Console.WriteLine($"Edited: id={item.Id}, title={item.Title}, amount={item.Amount}, day={item.DayOfTheMonth}, enddate={item.EndDate}");
+            StateHasChanged();
+            ClosePopup();
+            ClosePopupEdit();
         }
 
         private void RemoveRecurringPayment(RecurringPayment item)
@@ -200,7 +307,7 @@ namespace JixbeeRedesign.Components.Pages.Screens
         {
             if (item.JustSwiped)
                 return;
-
+            isDisabled = false;
             recurringPayment = await RecurringPaymentService.GetByIdAsync(item.Id);
             //NavigationManager.NavigateTo($"/opnames/gepland/{item.Id}");
             showPopupEdit = true;

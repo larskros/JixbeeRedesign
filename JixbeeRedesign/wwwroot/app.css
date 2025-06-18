@@ -4,7 +4,9 @@
     --primarycolor100: #42A5F5;
     --primarycolor15: #E4F0F9;
     --primarycolor10: #EDF6FE;
+    --primarycolor10rgba: rgba(66, 165, 245, 0.1);
     --secondarycolor100: #FFCC80;
+    --secondarycolor10rgba: rgba(255, 204, 128, 0.1) !important;
     --black100: #1F1F1F;
     --black50: #909090;
     --black33: #B5B5B5;
@@ -18,7 +20,55 @@
     --alerterrordark: #DD2E3E;
     /* MudBlazor */
     --mud-palette-primary: #42A5F5 !important;
-    --mud-palette-primary-hover: #EDF6FE !important;
+    --mud-palette-primary-hover: rgba(66, 165, 245, 0.1) !important;
+    --mud-palette-warning: #FFCC80 !important;
+    --mud-palette-warning-hover: rgba(255, 204, 128, 0.1) !important;
+}
+.theme-light {
+    --primarycolor100: #42A5F5;
+    --primarycolor15: #E4F0F9;
+    --primarycolor10: #EDF6FE;
+    --background: #F0F0F0;
+    --textinput: #F4F5F6;
+}
+
+.theme-dark {
+    --primarycolor100: #42A5F5;
+    --primarycolor15: #E4F0F9;
+    --primarycolor10: #EDF6FE;
+    --secondarycolor100: #FFCC80;
+    --black100: #FFFFFF;
+    --black50: #808080;
+    --black33: #4d4d4d;
+    --black20: #333333;
+    --black10: #1a1a1a;
+    --white: #383838;
+    --textinput: #383838;
+    --background: #1F1F1F;
+}
+
+.theme-creme {
+    --primarycolor100: #D7BFAE;
+    --primarycolor15: #F2E6DA;
+    --primarycolor10: #F8F1EC;
+    --secondarycolor100: #EDC4A7;
+    --background: #F8F1EC;
+    --textinput: #F2E8DF;
+    --mud-palette-primary: #D7BFAE !important;
+    --mud-palette-primary-hover: #FDF6F1 !important;
+}
+
+.theme-gold {
+    --primarycolor100: #FBA43A;
+    --primarycolor15: #fddcb4;
+    --primarycolor10: #fee8cd;
+    --primarycolor10rgba: rgba(251, 164, 58, 0.1);
+    --secondarycolor100: #FBA43A;
+    --secondarycolor10rgba: rgba(235, 147, 54, 0.1) !important;
+    --mud-palette-primary: #FBA43A !important;
+    --mud-palette-primary-hover: rgba(251, 164, 58, 0.1) !important;
+    --mud-palette-warning: #FBA43A !important;
+    --mud-palette-warning-hover: rgba(235, 147, 54, 0.1) !important !important;
 }
 
 * {
@@ -26,6 +76,7 @@
 }
 
 body {
+    color: var(--black100);
     overflow: hidden;
 }
 

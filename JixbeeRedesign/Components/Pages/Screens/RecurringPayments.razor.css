@@ -23,15 +23,16 @@
             transition: .5s;
         }
 
-            .recurring-payment-card {
-                display: grid;
-                grid-template:
-                    "title day"
-                    "remaining amount";
-                justify-content: space-between;
-                min-height: 120px;
-                user-select: none;
-            }
+.recurring-payment-card {
+    max-width: calc(100vw - 40px);
+    display: grid;
+    grid-template:
+        "title day"
+        "remaining amount";
+    justify-content: space-between;
+    min-height: 120px;
+    user-select: none;
+}
     .recurring-payment-card.swiped-left {
         transform: translateX(-20px);
         transition: .5s;
@@ -47,6 +48,10 @@
 .recurring-payment-title {
     font-size: 16px;
     font-weight: 500;
+    grid-area: title;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow: auto;
 }
 
 .recurring-payment-day {
@@ -63,6 +68,7 @@
 ::deep .recurring-payment-remaining {
     align-self: flex-end;
     margin: 0;
+    width: fit-content;
 }
 
 .recurring-payment-amount {
