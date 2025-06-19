@@ -58,13 +58,21 @@
     --mud-palette-primary-hover: #FDF6F1 !important;
 }
 
-.theme-gold {
+.theme-dark-gold {
     --primarycolor100: #FBA43A;
     --primarycolor15: #fddcb4;
     --primarycolor10: #fee8cd;
     --primarycolor10rgba: rgba(251, 164, 58, 0.1);
     --secondarycolor100: #FBA43A;
     --secondarycolor10rgba: rgba(235, 147, 54, 0.1) !important;
+    --black100: #FFFFFF;
+    --black50: #808080;
+    --black33: #4d4d4d;
+    --black20: #333333;
+    --black10: #1a1a1a;
+    --white: #383838;
+    --textinput: #383838;
+    --background: #1F1F1F;
     --mud-palette-primary: #FBA43A !important;
     --mud-palette-primary-hover: rgba(251, 164, 58, 0.1) !important;
     --mud-palette-warning: #FBA43A !important;

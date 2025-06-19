@@ -20,6 +20,7 @@ builder.Services.AddMudServices();
 builder.Services.AddSingleton<NotificationService>();
 builder.Services.AddSingleton<RecurringPaymentService>();
 builder.Services.AddScoped<WithdrawStateService>();
+builder.Services.AddScoped<ThemeStateService>();
 
 var app = builder.Build();
 

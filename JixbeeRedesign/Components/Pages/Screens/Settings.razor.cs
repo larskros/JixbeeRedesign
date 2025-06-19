@@ -13,25 +13,32 @@ namespace JixbeeRedesign.Components.Pages.Screens
         [Parameter] public int InitialIndex { get; set; }
         [Inject] public NavigationManager NavigationManager { get; set; }
         [Inject] public IJSRuntime JS { get; set; }
+        [Inject] protected ThemeStateService ThemeState { get; set; }
 
         private string preferredLanguage { get; set; }
-        private string[] languages = { "nl", "en"};
-        private string preferredTheme { get; set; }
-        private string[] themes = { "light", "dark", "creme", "gold"};
 
         private int activeIndex = 0;
 
         protected override async Task OnInitializedAsync()
         {
+            if (string.IsNullOrEmpty(ThemeState.PreferredTheme))
+            {
+                ThemeState.PreferredTheme = "light";
+                Console.WriteLine("onload 2 : " + ThemeState.PreferredTheme);
+            }
+            else
+            {
+                Console.WriteLine("onload: " + ThemeState.PreferredTheme);
+            }
             preferredLanguage = "nl";
         }
 
 
         private async void OnThemeChanged(string theme)
         {
-            preferredTheme = theme;
-            Console.WriteLine("chosen theme: " + preferredTheme);
-            await JS.InvokeVoidAsync("setTheme", preferredTheme);
+            ThemeState.PreferredTheme = theme;
+            Console.WriteLine("chosen theme: " + ThemeState.PreferredTheme);
+            await JS.InvokeVoidAsync("setTheme", ThemeState.PreferredTheme);
         }
     }
 }

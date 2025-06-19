@@ -69,11 +69,15 @@
     fill: var(--black100) !important;
 }
 ::deep .dark-theme svg {
-    fill: var(--black100) !important;
+    fill: #1F1F1F !important;
 }
 ::deep .creme-theme svg {
     fill: #f5d4a3 !important;
 }
-::deep .gold-theme svg {
+::deep .dark-gold-theme svg {
     fill: #FBA43A !important;
+}
+
+.settings-page ::deep .mud-icon-size-large {
+    font-size: 28px;
 }

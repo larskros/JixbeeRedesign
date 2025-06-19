@@ -28,13 +28,13 @@
             <MudIcon Icon="@Icons.Material.Outlined.Contrast" />
             <span class="title">Thema</span>
         </div>
-        <MudRadioGroup T="string" Value="@preferredTheme"  ValueChanged="@OnThemeChanged" >
+        <MudRadioGroup T="string" Value="@ThemeState.PreferredTheme"  ValueChanged="@OnThemeChanged" >
             <div class="setting-item-content">
                 <div class="setting-item-input">
-                    <MudRadio T="string" Class="light-theme" Value="@("light")" CheckedIcon="@Icons.Material.Outlined.CheckCircle" UncheckedIcon="@Icons.Material.Outlined.Circle" Dense="true" />
-                    <MudRadio T="string" Class="dark-theme" Value="@("dark")" CheckedIcon="@Icons.Material.Filled.CheckCircle" UncheckedIcon="@Icons.Material.Filled.Circle" Dense="true" />
-                    <MudRadio T="string" Class="creme-theme" Value="@("creme")" CheckedIcon="@Icons.Material.Filled.CheckCircle" UncheckedIcon="@Icons.Material.Filled.Circle" Dense="true" />
-                    <MudRadio T="string" Class="gold-theme" Value="@("gold")" CheckedIcon="@Icons.Material.Filled.CheckCircle" UncheckedIcon="@Icons.Material.Filled.Circle" Dense="true" />
+                    <MudRadio T="string" Class="light-theme" Value="@("light")" Size="Size.Large" CheckedIcon="@Icons.Material.Outlined.CheckCircle" UncheckedIcon="@Icons.Material.Outlined.Circle" Dense="true" />
+                    <MudRadio T="string" Class="dark-theme" Value="@("dark")" Size="Size.Large" CheckedIcon="@Icons.Material.Filled.CheckCircle" UncheckedIcon="@Icons.Material.Filled.Circle" Dense="true" />
+                    <MudRadio T="string" Class="creme-theme" Value="@("creme")" Size="Size.Large" CheckedIcon="@Icons.Material.Filled.CheckCircle" UncheckedIcon="@Icons.Material.Filled.Circle" Dense="true" />
+                    <MudRadio T="string" Class="dark-gold-theme" Value="@("dark-gold")" Size="Size.Large" CheckedIcon="@Icons.Material.Filled.CheckCircle" UncheckedIcon="@Icons.Material.Filled.Circle" Dense="true" />
                 </div>
             </div>
         </MudRadioGroup>
